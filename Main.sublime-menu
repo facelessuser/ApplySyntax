@@ -12,17 +12,17 @@
                 "children":
                 [
                     {
-                        "caption": "DetectSyntax",
+                        "caption": "ApplySyntax",
                         "children":
                         [
                             {
                                 "command": "open_file",
-                                "args": {"file": "${packages}/DetectSyntax/DetectSyntax.sublime-settings"},
+                                "args": {"file": "${packages}/ApplySyntax/ApplySyntax.sublime-settings"},
                                 "caption": "Settings – Default"
                             },
                             {
                                 "command": "open_file",
-                                "args": {"file": "${packages}/User/DetectSyntax.sublime-settings"},
+                                "args": {"file": "${packages}/User/ApplySyntax.sublime-settings"},
                                 "caption": "Settings – User"
                             }
                         ]
