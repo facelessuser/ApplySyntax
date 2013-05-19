@@ -101,6 +101,7 @@
 				{"file_name": ".*\\Guardfile$"},
 				{"file_name": ".*\\[Rr]akefile$"},
 				{"file_name": ".*\\Vagrantfile(\\..*)?$"},
+				{"file_name": ".*\\Berksfile$"},
 				{"file_name": ".*\\Thorfile$"},
 				{"file_name": ".*\\.thor$"},
 				{"file_name": ".*\\config.ru$"},
