@@ -48,6 +48,7 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
         self.syntaxes = []
         self.plugin_name = 'ApplySyntax'
         self.plugin_dir = os.path.join(sublime.packages_path(), self.plugin_name)
+        self.user_dir = os.path.join(sublime.packages_path(), 'User')
         self.settings_file = self.plugin_name + '.sublime-settings'
         self.reraise_exceptions = False
 
@@ -195,7 +196,14 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
             path_to_file = function_name + '.py'
 
         if re.match(r"^Packages(?:\\|/)", path_to_file) is None:
-            path_to_file = os.path.join(self.plugin_dir, path_to_file)
+            file_in_user_dir = os.path.join(self.user_dir, path_to_file)
+            file_in_plugin_dir = os.path.join(self.plugin_dir, path_to_file)
+            if os.path.exists(file_in_user_dir):
+                path_to_file = file_in_user_dir
+            elif os.path.exists(file_in_plugin_dir):
+                path_to_file = file_in_plugin_dir
+            else:
+                path_to_file = None
         else:
             path_to_file = os.path.join(os.path.dirname(sublime.packages_path), path_to_file)
         function = self.get_function(path_to_file, function_name)
