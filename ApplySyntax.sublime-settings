@@ -133,6 +133,21 @@
 		// 		{"file_name": ".*\\.ruby$"}
 		// 	]
 		// },
+		// {
+		// 	// This is an example of using a contains rule to match files which contain the specified string
+		// 	// anywhere inside them. It's useful when you can only determine which syntax to use by looking
+		// 	// at what's actually inside the file. In this case, since the file contains a handlebar template,
+		// 	// we switch its syntax highlighting to Handlebars.
+		// 	//
+		// 	// NOTE: Make sure to always use a specific match or pair this rule with one for the extension or the file or other
+		// 	// characteristics, otherwise you might end up matching the settings file as well (because it contains the string)
+		// 	"name": "Handlebars",
+		// 	"match": "all",
+		// 	"rules": [
+		// 		{"file_name": ".*\\.html$"},
+		// 		{"contains": "<script [^>]*type=\"text\\/x-handlebars\"[^>]*>"}
+		// 	]
+		// },
 		{
 			"name": "Blade",
 			"rules": [

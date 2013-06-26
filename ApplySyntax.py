@@ -44,6 +44,7 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
     def __init__(self):
         self.first_line = None
         self.file_name = None
+        self.entire_file = None
         self.view = None
         self.syntaxes = []
         self.plugin_name = 'ApplySyntax'
@@ -84,9 +85,16 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
     def reset_cache_variables(self, view):
         self.view = view
         self.file_name = view.file_name()
-        self.first_line = view.substr(view.line(0))
+        self.first_line = None # we read the first line only when needed
+        self.entire_file = None # we read the contents of the entire file only when needed
         self.syntaxes = []
         self.reraise_exceptions = False
+
+    def fetch_first_line(self):
+        self.first_line = self.view.substr(self.view.line(0)) # load the first line only when needed
+
+    def fetch_entire_file(self):
+        self.entire_file = self.view.substr(sublime.Region(0, self.view.size())) # load file only when needed
 
     def set_syntax(self, name):
         # the default settings file uses / to separate the syntax name parts, but if the user
@@ -213,20 +221,36 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
                 return False
 
     def regexp_matches(self, rule):
+        from_beginning = True # match only from the beginning or anywhere in the string
+
         if "first_line" in rule:
+            if self.first_line is None:
+                self.fetch_first_line()
             subject = self.first_line
             regexp = rule.get("first_line")
         elif "binary" in rule:
+            if self.first_line is None:
+                self.fetch_first_line()
             subject = self.first_line
             regexp = '^#\\!(?:.+)' + rule.get("binary")
         elif "file_name" in rule:
             subject = self.file_name
             regexp = rule.get("file_name")
+        elif "contains" in rule:
+            if self.entire_file is None:
+                self.fetch_entire_file()
+            subject = self.entire_file
+            regexp = rule.get("contains")
+            from_beginning = False # requires us to match anywhere in the file
         else:
             return False
 
         if regexp and subject:
-            return re.match(regexp, subject) is not None
+            if from_beginning:
+                result = re.match(regexp, subject)
+            else:
+                result = re.search(regexp, subject) # matches anywhere, not only from the beginning
+            return result is not None
         else:
             return False
 
