@@ -118,10 +118,10 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
         # only set the syntax if it's different
         if new_syntax != current_syntax:
             # let's make sure it exists first!
-            if os.path.exists(file_path):
+            try:
                 self.view.set_syntax_file(new_syntax)
                 log('Syntax set to ' + name + ' using ' + new_syntax)
-            else:
+            except:
                 log('Syntax file for ' + name + ' does not exist at ' + new_syntax)
 
     def load_syntaxes(self):
