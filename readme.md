@@ -18,9 +18,14 @@ ApplySyntax can be installed in a variety of ways:
 	Find and select 'ApplySyntax'
 
 * By cloning this repository in Packages
-
-		cd into your Packages folder
-		git clone git://github.com/facelessuser/ApplySyntax.git .
+	
+	```bash
+	# cd into your Packages folder
+	git clone git://github.com/facelessuser/ApplySyntax.git .
+	
+	# if sublime 3
+	git clone -b ST3 git://github.com/facelessuser/ApplySyntax.git .
+	```
 
 * By downloading the files and placing them in a directory under Packages, such as ApplySyntax or User
 
