@@ -11,7 +11,7 @@ Installation
 
 ApplySyntax can be installed in a variety of ways:
 
-* Through Package Control [http://wbond.net/sublime_packages/package_control](http://wbond.net/sublime_packages/package_control)
+* Through [wbond](https://sublime.wbond.net)'s Package Control at [https://sublime.wbond.net](https://sublime.wbond.net)
 
 	Open Package Control
 	Select 'Install Package'
@@ -43,15 +43,15 @@ See the default settings file for examples and comments related to creating rule
 Credits
 -------
 
-facelessuser is now the current maintainer of DetectSyntax (now ApplySyntax)
+[@facelessuser](https://github.com/facelessuser) is the current maintainer of ApplySyntax (originally [DetectSyntax](https://github.com/phillipkoebbe/DetectSyntax))
 
-DetectSyntax was originally created by phillipkoebbe.  In his words, these are his credits:
+DetectSyntax was created by [@phillipkoebbe](https://github.com/phillipkoebbe). The following quote from him summarizes the motivation and history of the package:
 
-It all started by forking the plugin created by JeanMertz (1). I modified it quite extensively until I ended up with something entirely my own (2). @maxim and @omarramos commented on the gist and suggested it should be part of Package Control. As I had created it solely for my own consumption, it seemed a bit "hard-coded" to be valuable as a package, but then I took a look at SetSyntax (3) and saw how using settings would make it very flexible. That set me on the path that led to DetectSyntax.
+> It all started by forking the plugin created by [@JeanMertz](https://github.com/JeanMertz)¹. I modified it quite extensively until I ended up with something entirely my own². [@maxim](https://github.com/maxim) and [@omarramos](https://github.com/omarramos) commented on the gist and suggested it should be part of [Package Control](https://github.com/wbond/sublime_package_control). As I had created it solely for my own consumption, it seemed a bit "hard-coded" to be valuable as a package, but then I took a look at SetSyntax³ and saw how using settings would make it very flexible. That set me on the path that led to DetectSyntax.
 
-(1) [https://gist.github.com/925008](https://gist.github.com/925008)
-(2) [https://gist.github.com/1497794](https://gist.github.com/1497794)
-(3) [https://github.com/aparajita/SetSyntax](https://github.com/aparajita/SetSyntax)
+1. [https://gist.github.com/925008](https://gist.github.com/925008)
+2. [https://gist.github.com/1497794](https://gist.github.com/1497794)
+3. [https://github.com/aparajita/SetSyntax](https://github.com/aparajita/SetSyntax) *(no longer exists)*
 
 Contributing
 ------------
