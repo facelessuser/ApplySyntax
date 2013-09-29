@@ -106,6 +106,12 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
         file_name = name + '.tmLanguage'
         new_syntax = sublime_format_path('/'.join(['Packages', path, file_name]))
 
+        # Some packages store the .tmLanguage at /Syntaxes instead of in the package root path
+        try:
+            sublime.load_resource(new_syntax)
+        except:
+            new_syntax = sublime_format_path('/'.join(['Packages', path, 'Syntaxes', file_name]))
+
         current_syntax = self.view.settings().get('syntax')
 
         # only set the syntax if it's different
