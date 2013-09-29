@@ -77,7 +77,7 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
         for syntax in self.syntaxes:
             # stop on the first syntax that matches
             if self.syntax_matches(syntax):
-                self.set_syntax(syntax.get("name"))
+                self.set_syntax(syntax.get("name"), syntax.get("package_name"))
                 break
 
     def reset_cache_variables(self, view):
@@ -87,7 +87,7 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
         self.syntaxes = []
         self.reraise_exceptions = False
 
-    def set_syntax(self, name):
+    def set_syntax(self, name, package_name=None):
         # the default settings file uses / to separate the syntax name parts, but if the user
         # is on windows, that might not work right. And if the user happens to be on Mac/Linux but
         # is using rules that were written on windows, the same thing will happen. So let's
@@ -99,6 +99,9 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
 
         if not path:
             path = name
+
+        if package_name:
+            path = package_name
 
         file_name = name + '.tmLanguage'
         new_syntax = sublime_format_path('/'.join(['Packages', path, file_name]))
