@@ -194,6 +194,13 @@
 				{"binary": "bash"}
 			]
 		},
+        {
+            // This rule requires the jQuery plugin to be installed (via PackageControl or  https://github.com/mrmartineau/jQuery)
+            "name": "jQuery/Syntaxes/jQueryJavaScript",
+            "rules": [
+                {"function": {"name": "using_jquery"}}
+            ]
+        },
 		{
 			// This doesn't really need to be here as ST2 identifies Apache files correctly, but I leave it
 			// for instructional value
