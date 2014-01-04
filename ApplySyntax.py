@@ -80,6 +80,9 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
             self.view = view
             self.set_syntax(name)
 
+    def on_activated(self, view):
+        self.detect_syntax(view)
+
     def on_load(self, view):
         self.detect_syntax(view)
 
