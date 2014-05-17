@@ -51,7 +51,8 @@
             // I put XML first because of files like *.tmLanguage. It is unlikely
             // that this rule will result in a false positive, meaning if it
             // matches, you probably want the XML syntax
-            "name": "XML/XML", "rules": [
+            "name": "XML/XML", 
+            "rules": [
                 {"file_name": ".*\\.xml(\\.dist)?$"},
                 {"first_line": "^<\\?xml"}
             ]
@@ -59,7 +60,8 @@
         {
             // The Cucumber and RSpec rules come before Rails and Ruby because they end
             // in .rb and will be identified as Rails or Ruby otherwise.
-            "name": "Cucumber/Cucumber Steps", "rules": [
+            "name": "Cucumber/Cucumber Steps", 
+            "rules": [
                 {"file_name": ".*steps\\.rb$"}
             ]
         },
