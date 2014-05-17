@@ -207,8 +207,9 @@
                 {"file_name": "profile"},
                 {"file_name": ".*\\.bash.*$"},
                 {"file_name": ".*\\.z(shrc|shenv|profile|login|logout).*$"},
-                {"file_name": ".*\\.(bash|sh)$"},
-                {"binary": "bash"}
+                {"file_name": ".*\\.(bash|sh|zsh)$"},
+                {"binary": "bash"},
+                {"binary": "zsh"}
             ]
         },
         {
@@ -217,6 +218,14 @@
             "name": "Apache/Apache",
             "rules": [
                 {"file_name": "^.*(\\.htaccess|\\.htgroups|\\.htpasswd|httpd\\.conf)$"}
+            ]
+        },
+        {
+            // ST recognizes .py files, but not if they don't have an extension, just a shebang
+            "name": "Python/Python",
+            "rules": [
+                {"file_name": ".*\\.(py|pyw|py3)"},
+                {"binary": "python"}
             ]
         }
     ]
