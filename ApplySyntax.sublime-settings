@@ -172,7 +172,7 @@
         {
             "name": "PHP/PHP",
             "rules": [
-                {"file_name": ".*\\.(php|inc|phtml)$"},
+                {"file_name": ".*\\.(php(3|4|5)?|inc|phtml)$"},
                 {"first_line": "^<\\?php"}
             ]
         },
