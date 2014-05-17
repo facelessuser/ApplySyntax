@@ -1,14 +1,14 @@
-// rules is a list (array) of checks that you want to make against the file in the
+// "rules" is a list (array) of checks that you want to make against the file in the
 // current view. A rule is either a regular expression or a function. If using a
 // regular expression, you can specify whether you want it tested against the
-// file_name or the first line of the file (think shebangs and xml files). If the
+// "file_name" or the first line of the file (think shebangs and xml files). If the
 // rule is a function, you must provide the path to the file containing the
 // function and the name of the function to call. When this function is called, the
-// file_name will be passed to it as the only argument. You are free to do whatever
+// "file_name" will be passed to it as the only argument. You are free to do whatever
 // you want in your function, just return True or False.
 
-// NOTE: file_name is the full, absolute path of the file. file_name is not altered
-// in any way after it is retrieved from ST2, so pay attention to case when
+// NOTE: "file_name" is the full, absolute path of the file. "file_name" is not altered
+// in any way after it is retrieved from Sublime, so pay attention to case when
 // constructing regular expressions.
 
 // For syntax files you must specify the path to the syntax file. The plugin is
@@ -23,7 +23,7 @@
 // because it is not known which package will be on a machine, you can set the
 // syntax as an array of names like:
 
-// ["RSpec", "RSpec (snippets and syntax)/Syntaxes/RSpec"]
+// "name": ["RSpec", "RSpec (snippets and syntax)/Syntaxes/RSpec"]
 
 // NOTE: You can define the syntaxes using the path separator for your platform or
 // a forward slash (/). If your path separator is a backslash (\), you will need to
@@ -32,19 +32,19 @@
 
 // The rules are processed until the first True result, so order your rules in a
 // way that makes sense to you. These are the syntax definitions that I use. See
-// below for comments. Also note that some of the rules may not be necessary as ST2
-// does identify files well, but I leave them here as examples.
+// below for comments. Also note that some of the rules may not be necessary as
+// Sublime Text does identify files well, but I leave them here as examples.
 
 {
-    // if an exception occurs when processing a function, should it be reraised
+    // If an exception occurs when processing a function, should it be reraised
     // so the user gets feedback? This is really only useful to those writing
     // functions. The average user just wants the plugin to work, so let's not reraise
     // the exception
     "reraise_exceptions": false,
     // If you want to have a syntax applied when new files are created, set
-    // new_file_syntax to the name of the syntax to use. The format is exactly the
+    // "new_file_syntax" to the name of the syntax to use. The format is exactly the
     // same as "name" in the rules below. For example, if you want to have a new
-    // file use JavaScript syntax, set new_file_syntax to 'JavaScript'.
+    // file use JavaScript syntax, set "new_file_syntax" to 'JavaScript'.
     "new_file_syntax": false,
     "default_syntaxes": [
         {
@@ -85,12 +85,9 @@
         },
         {
             // This is an example of using a custom function to decide whether or
-            // not to apply this syntax. source file should be in a plugin folder.
+            // not to apply this syntax. The source file should be in a plugin folder.
             // "name" is the function name and "source" is the file in which the
-            // function is contained.  They rule should be specified as such.
-            //
-            //   {"function": {"name": "is_rails_file", "source": "Packages/ApplySyntax/is_rails_file"}}
-            //
+            // function is contained. The rule should be specified as such.
             "name": "Rails/Ruby on Rails",
             "rules": [
                 {"function": {"name": "is_rails_file", "source": "ApplySyntax/is_rails_file"}}
@@ -114,8 +111,8 @@
                 {"file_name": ".*\\Podfile$"},
                 {"file_name": ".*\\.podspec$"},
 
-                // a binary rule does the same thing as a first_line rule that uses
-                // a regexp to match a shebang, the difference being DetectSyntax
+                // A binary rule does the same thing as a "first_line" rule that uses
+                // a regexp to match a shebang, the difference being ApplySyntax
                 // will construct the regexp and the user doesn't have to. So
                 //
                 //      {"binary": "ruby"}
@@ -128,11 +125,11 @@
             ]
         },
         // {
-        // This is an example of having to match all rules. In this example,
-        // the file needs to have a ruby shebang *and* end in .ruby. If "match"
-        // == "all", DetectSyntax will set the named syntax only if all rules
-        // match. If "match" is anything other than "all", the syntax will be
-        // set if any rule matches (the normal behavior)
+        // This is an example of having to match all rules. Here, the file needs to
+        // have a ruby shebang *and* end in .ruby. If "match"=="all", ApplySyntax
+        // will set the named syntax only if all rules match. If "match" is
+        // anything other than "all", the syntax will be set if any rule matches
+        // (the normal behavior)
         //  "name": "Ruby/Ruby",
         //  "match": "all",
         //  "rules": [
@@ -150,7 +147,13 @@
         // NOTE: Make sure to always use a specific match or pair this rule
         // with one for the extension or the file or other characteristics,
         // otherwise you might end up matching the settings file as well
-        // (because it contains the string)
+        // (because it contains the string).
+        //
+        // Also, please note that using "contains" rules may (significantly) slow
+        // down the editor, as it is searching throughout the entire file instead
+        // of just looking at the file name and/or its first line. That being said,
+        // sometimes a full file search is the only way to properly identify the
+        // syntax of interest.
         //     "name": "Handlebars/Handlebars",
         //     "match": "all",
         //     "rules": [
@@ -192,8 +195,8 @@
             ]
         },
         {
-            // This rule requires the INI plugin to be installed (via PackageControl or
-            // https://github.com/clintberry/sublime-text-2-ini)
+            // This rule requires the INI plugin to be installed (via Package Control
+            // or https://github.com/clintberry/sublime-text-2-ini)
             "name": "INI/INI",
             "rules": [
                 {"file_name": ".*/git/(attributes|config|ignore)$"},
@@ -215,15 +218,16 @@
             ]
         },
         {
-            // This doesn't really need to be here as ST2 identifies Apache files correctly,
-            // but I leave it for instructional value
+            // This doesn't really need to be here as Sublime Text identifies
+            // Apache files correctly, but I leave it for instructional value
             "name": "Apache/Apache",
             "rules": [
                 {"file_name": "^.*(\\.htaccess|\\.htgroups|\\.htpasswd|httpd\\.conf)$"}
             ]
         },
         {
-            // ST recognizes .py files, but not if they don't have an extension, just a shebang
+            // Sublime recognizes .py files, but not if they don't have an extension,
+            // just a shebang
             "name": "Python/Python",
             "rules": [
                 {"file_name": ".*\\.(py|pyw|py3)"},
