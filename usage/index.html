@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>User Guide - ApplySyntax Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_custom.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> ApplySyntax Documentation</a>
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      <ul class="current">
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="..">Home</a>
+                
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 current">
+                <a class="current" href="./">User Guide</a>
+                
+                    <ul>
+                    
+                        <li class="toctree-l3"><a href="#usage">Usage</a></li>
+                        
+                    
+                        <li class="toctree-l3"><a href="#creating-rules">Creating Rules</a></li>
+                        
+                            <li><a class="toctree-l4" href="#name">Name</a></li>
+                        
+                            <li><a class="toctree-l4" href="#extensions">Extensions</a></li>
+                        
+                            <li><a class="toctree-l4" href="#match">Match</a></li>
+                        
+                            <li><a class="toctree-l4" href="#rules">Rules</a></li>
+                        
+                            <li><a class="toctree-l4" href="#settings-options">Settings Options</a></li>
+                        
+                    
+                    </ul>
+                
+            </li>
+        
+
+    
+</ul>
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">ApplySyntax Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+    <li>User Guide</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="https://github.com/facelessuser/ApplySyntax" class="icon icon-github"> Edit on GitHub</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              <h1 id="usage"><a name="user-content-usage" href="#usage" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Usage</h1>
+<p>ApplySyntax is based on the idea of creating rules for selecting a certain syntax. You define the rules, the plugin checks them. The first one to pass wins.</p>
+<p>Create your own custom rules in <code>Packages/User/ApplySyntax.sublime-settings</code>. The easiest way to get started is to just copy the default settings file found in <code>Packages/ApplySyntax/ApplySyntax.sublime-settings</code> to your <code>Packages/User</code> directory and modify it to meet your needs. Make sure you rename the <code>default_syntaxes</code> key to just syntaxes. If you don&rsquo;t, you will overwrite the default syntaxes and they will not work.</p>
+<p>See the default settings file for examples.</p>
+<h1 id="creating-rules"><a name="user-content-creating-rules" href="#creating-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Creating Rules</h1>
+<p>Each rule is a dictionary within the syntax array.  Let&rsquo;s take a look at the top level parameters:</p>
+<h2 id="name"><a name="user-content-name" href="#name" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Name</h2>
+<p><code>name</code> is the syntax file that will be applied to a view which meets the criteria defined in the rule.</p>
+<p>For syntax files you must specify the path to the syntax file. The plugin is capable of supporting multiple levels of nesting if you need it to. For example, if you had all of your tmLanguage files for Rails organized like this: <code>Packages/Rails/Language/*.tmLanguage</code>, and you were looking to use the <code>Ruby Haml.tmLanguage</code> file, you would define the syntax to be:</p>
+<div class="codehilite"><pre><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Rails/Language/Ruby Haml&quot;</span>
+</pre></div>
+
+
+<p>If it is desirable for the syntax rule to reference multiple tmLanguage files because it is not known which package will be on a machine, you can set the syntax as an array of names like:</p>
+<div class="codehilite"><pre><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;RSpec&quot;</span><span class="p">,</span> <span class="s2">&quot;RSpec (snippets and syntax)/Syntaxes/RSpec&quot;</span><span class="p">]</span>
+</pre></div>
+
+
+<h2 id="extensions"><a name="user-content-extensions" href="#extensions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Extensions</h2>
+<p><code>extensions</code> is a convienance option to add a given set of extensions to your language settings file.  By adding the extension to the language settings file, sidebar icons in ST3 will display the proper icon and files will load with the proper syntax via Sublime&rsquo;s default extention detection method.  Keep in mind though that other rules can override this.  As <code>extensions</code> isn&rsquo;t really a rule, but just a list that automatically adds the extension to the langauge settings file, a hit on this array won&rsquo;t currently stop ApplySyntax from processing more rules (this may change in the future).</p>
+<p>Apply sytnax will create a file <code>ApplySyntax.ext-list</code> in your <code>User</code> folder and track which extension it added so that if you remove a rule, ApplySyntax will only remove the extensions it added to the language file in question.</p>
+<p>If you do not like this functionality, you can simply disable it by setting the following option in your settings file to <code>false</code>:</p>
+<div class="codehilite"><pre>    <span class="s2">&quot;add_exts_to_lang_settings&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</pre></div>
+
+
+<h2 id="match"><a name="user-content-match" href="#match" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Match</h2>
+<p><code>match</code> is a setting that you either include or do not.  When included, you set it to <code>all</code>.  When set, all rules defined must be met for a match to be considered successful.</p>
+<div class="codehilite"><pre>    <span class="s2">&quot;match&quot;</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span>
+</pre></div>
+
+
+<p>So in this case, all the rules must match for the syntax to be applied:</p>
+<div class="codehilite"><pre>     <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Handlebars/Handlebars&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;match&quot;</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;rules&quot;</span><span class="o">:</span> <span class="p">[</span>
+         <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*\\.html$&quot;</span><span class="p">},</span>
+         <span class="p">{</span><span class="s2">&quot;contains&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;script [^&gt;]*type=\&quot;text\\/x-handlebars\&quot;[^&gt;]*&gt;&quot;</span><span class="p">}</span>
+     <span class="p">]</span>
+</pre></div>
+
+
+<p>In this case, any of the rules can match:</p>
+<div class="codehilite"><pre>    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Ruby/Ruby&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;extensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;thor&quot;</span><span class="p">,</span> <span class="s2">&quot;rake&quot;</span><span class="p">,</span> <span class="s2">&quot;simplecov&quot;</span><span class="p">,</span> <span class="s2">&quot;jbuilder&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">,</span> <span class="s2">&quot;podspec&quot;</span><span class="p">,</span> <span class="s2">&quot;rabl&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;rules&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*(\\\\|/)Gemfile$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*(\\\\|/)Capfile$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*(\\\\|/)Guardfile$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*(\\\\|/)[Rr]akefile$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*(\\\\|/)Berksfile$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*(\\\\|/)[Cc]heffile$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*(\\\\|/)Thorfile$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*(\\\\|/)Podfile$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*(\\\\|/)config.ru$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*\\\\Vagrantfile(\\\\..*)?$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*/Vagrantfile(/..*)?$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*\\.thor$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*\\.rake$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*\\.simplecov$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*\\.jbuilder$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*\\.rb$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*\\.podspec$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*\\.rabl$&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">&quot;binary&quot;</span><span class="o">:</span> <span class="s2">&quot;ruby&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+</pre></div>
+
+
+<h2 id="rules"><a name="user-content-rules" href="#rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Rules</h2>
+<p><code>rules</code> is an array of rules that can be used to target specific files with your defined syntax file.  The rules are processed until the first True result, so order your rules in a way that makes sense to you.</p>
+<h3 id="filename-rule"><a name="user-content-filename-rule" href="#filename-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Filename Rule</h3>
+<p>Filename rule defines a filename with regex.</p>
+<div class="codehilite"><pre><span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*\\.xml(\\.dist)?$&quot;</span><span class="p">},</span>
+</pre></div>
+
+
+<h3 id="first-line-rule"><a name="user-content-first-line-rule" href="#first-line-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>First Line Rule</h3>
+<p>First line rule allows you to check if the first line matches a given regex.</p>
+<div class="codehilite"><pre><span class="p">{</span><span class="s2">&quot;first_line&quot;</span><span class="o">:</span> <span class="s2">&quot;^&lt;\\?xml&quot;</span><span class="p">},</span>
+</pre></div>
+
+
+<h3 id="binary-shebang"><a name="user-content-binary-shebang" href="#binary-shebang" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Binary (Shebang)</h3>
+<p>A <code>binary</code> rule does the same thing as a <code>first_line</code> rule that uses a regex to match a shebang.  The difference being that ApplySyntax will construct the regex for you.</p>
+<p>So a <code>first_line</code> rule:</p>
+<div class="codehilite"><pre><span class="p">{</span><span class="s2">&quot;first_line&quot;</span><span class="o">:</span> <span class="s2">&quot;^#\\!(?:.+)ruby&quot;</span><span class="p">}</span>
+</pre></div>
+
+
+<p>Can be simplified as:</p>
+<div class="codehilite"><pre><span class="p">{</span><span class="s2">&quot;binary&quot;</span><span class="o">:</span> <span class="s2">&quot;ruby&quot;</span><span class="p">}</span>
+</pre></div>
+
+
+<h3 id="function-rule"><a name="user-content-function-rule" href="#function-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Function Rule</h3>
+<p>This is an example of using a custom function to decide whether or not to apply this syntax. The source file should be in a plugin folder. <code>name</code> is the function name and <code>source</code> is the file in which the function is contained; you must include the package it resides in, all sub-folders leading to the file, and the actual file name (extension not needed).</p>
+<p>When this function is called, the filename will be passed to it as the only argument. You are free to do whatever you want in your function, just return <code>True</code> or <code>False</code>.  But please be conscious of keeping it quick and light if possible.</p>
+<div class="codehilite"><pre><span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;is_rails_file&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;ApplySyntax/is_rails_file&quot;</span><span class="p">}}</span>
+</pre></div>
+
+
+<h3 id="content-rule"><a name="user-content-content-rule" href="#content-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Content Rule</h3>
+<p>Sometimes a filename or first line search is just not enough and maybe a function rule is overkill.  In this case, maybe searching content of a file can be enough.  You can search a file&rsquo;s content with regex for a specific token via the <code>contains</code> rule.</p>
+<div class="codehilite"><pre><span class="p">{</span><span class="s2">&quot;contains&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;script [^&gt;]*type=\&quot;text\\/x-handlebars\&quot;[^&gt;]*&gt;&quot;</span><span class="p">}</span>
+</pre></div>
+
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is recommended to pair <code>contains</code> rules with other rules via the <code class="codehilite"><span class="s2">&quot;match&quot;</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span></code> option to ensure you don&rsquo;t search every file (which can significantly slow down the editor), and you get good match results. If pairing with other rules, it is advised to pair it after the other required rule(s) to ensure you search the content of as few files as possible.</p>
+<p>Also, try to use very specific regex to ensure you don&rsquo;t get false positives.</p>
+</div>
+<h3 id="project-specific-rules"><a name="user-content-project-specific-rules" href="#project-specific-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Project Specific Rules</h3>
+<p>To define project specific syntaxes just add <code>project_syntaxes</code> to your project file.  <code>project_syntaxes</code> is an array; just add your syntax rules to it, and ApplySyntax will append the rules to the end of your globally defined rules.</p>
+<h2 id="settings-options"><a name="user-content-settings-options" href="#settings-options" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Settings Options</h2>
+<p>There are a couple of general settings found in `ApplySyntax.sublime-settings.</p>
+<h3 id="re-raise-exceptions"><a name="user-content-re-raise-exceptions" href="#re-raise-exceptions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Re-Raise Exceptions</h3>
+<p>If an exception occurs when processing a function, should it be re-raised so the user gets feedback? This is really only useful to those writing functions. The average user just wants the plugin to work.  By default, this will be set to <code>false</code>.</p>
+<div class="codehilite"><pre>    <span class="s2">&quot;reraise_exceptions&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</pre></div>
+
+
+<h3 id="new-file-syntax"><a name="user-content-new-file-syntax" href="#new-file-syntax" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>New File Syntax</h3>
+<p>If you want to have a syntax applied when new files are created, set <code>new_file_syntax</code> to the name of the syntax to use. The format is exactly the same as the <code>name</code> parameter in the syntax rules mentioned earlier. For example, if you want to have a new file use JavaScript syntax, set <code>new_file_syntax</code> to <code>JavaScript/JavaScript</code>.  The default is <code>false</code>.</p>
+<div class="codehilite"><pre>    <span class="s2">&quot;new_file_syntax&quot;</span><span class="o">:</span> <span class="s2">&quot;JavaScript/JavaScript&quot;</span><span class="p">,</span>
+</pre></div>
+
+
+<h3 id="add-extensions-to-language-settings"><a name="user-content-add-extensions-to-language-settings" href="#add-extensions-to-language-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Add Extensions to Language Settings</h3>
+<p>To enable adding defined extensions to language settings, just set <code>add_exts_to_lang_settings</code> to <code>true</code>.  See <a href="#extensions">Extensions</a> for more info.</p>
+<div class="codehilite"><pre>    <span class="s2">&quot;add_exts_to_lang_settings&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</pre></div>
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    
+    </p>
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+    
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        
+            <a href="https://github.com/facelessuser/ApplySyntax" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+        
+      <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      <span style="margin-left: 15px"><a href="" style="color: #fcfcfc">Next &raquo;</a></span>
+    </span>
+</div>
+
+<!--
+MkDocs version  : 0.12.1
+Docs Build Date : 2015-04-23 02:12:47.690158
+-->
+</body>
+</html>
