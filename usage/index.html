@@ -53,7 +53,10 @@
                 
                     <ul>
                     
-                        <li class="toctree-l3"><a href="#usage">Usage</a></li>
+                        <li class="toctree-l3"><a href="#user-guide">User Guide</a></li>
+                        
+                    
+                        <li class="toctree-l3"><a href="#overview">Overview</a></li>
                         
                     
                         <li class="toctree-l3"><a href="#creating-rules">Creating Rules</a></li>
@@ -109,12 +112,15 @@
 </div>
           <div role="main">
             <div class="section">
-              <h1 id="usage"><a name="user-content-usage" href="#usage" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Usage</h1>
+              <h1 class="doctitle" id="user-guide"><a name="user-content-user-guide" href="#user-guide" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>User Guide</h1>
+<p class="doctitle-info">Configuring and using ApplySyntax.<br /></p>
+<hr />
+<h1 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Overview</h1>
 <p>ApplySyntax is based on the idea of creating rules for selecting a certain syntax. You define the rules, the plugin checks them. The first one to pass wins.</p>
 <p>Create your own custom rules in <code>Packages/User/ApplySyntax.sublime-settings</code>. The easiest way to get started is to just copy the default settings file found in <code>Packages/ApplySyntax/ApplySyntax.sublime-settings</code> to your <code>Packages/User</code> directory and modify it to meet your needs. Make sure you rename the <code>default_syntaxes</code> key to just syntaxes. If you don&rsquo;t, you will overwrite the default syntaxes and they will not work.</p>
 <p>See the default settings file for examples.</p>
 <h1 id="creating-rules"><a name="user-content-creating-rules" href="#creating-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Creating Rules</h1>
-<p>Each rule is a dictionary within the syntax array.  Let&rsquo;s take a look at the top level parameters:</p>
+<p>Each rule is a dictionary within the syntax array.  Let&rsquo;s take a look at the top level parameters.</p>
 <h2 id="name"><a name="user-content-name" href="#name" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Name</h2>
 <p><code>name</code> is the syntax file that will be applied to a view which meets the criteria defined in the rule.</p>
 <p>For syntax files you must specify the path to the syntax file. The plugin is capable of supporting multiple levels of nesting if you need it to. For example, if you had all of your tmLanguage files for Rails organized like this: <code>Packages/Rails/Language/*.tmLanguage</code>, and you were looking to use the <code>Ruby Haml.tmLanguage</code> file, you would define the syntax to be:</p>
@@ -128,8 +134,8 @@
 
 
 <h2 id="extensions"><a name="user-content-extensions" href="#extensions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Extensions</h2>
-<p><code>extensions</code> is a convienance option to add a given set of extensions to your language settings file.  By adding the extension to the language settings file, sidebar icons in ST3 will display the proper icon and files will load with the proper syntax via Sublime&rsquo;s default extention detection method.  Keep in mind though that other rules can override this.  As <code>extensions</code> isn&rsquo;t really a rule, but just a list that automatically adds the extension to the langauge settings file, a hit on this array won&rsquo;t currently stop ApplySyntax from processing more rules (this may change in the future).</p>
-<p>Apply sytnax will create a file <code>ApplySyntax.ext-list</code> in your <code>User</code> folder and track which extension it added so that if you remove a rule, ApplySyntax will only remove the extensions it added to the language file in question.</p>
+<p><code>extensions</code> is a convenience option to add a given set of extensions to your language settings file.  By adding the extension to the language settings file, sidebar icons in ST3 will display the proper icon and files will load with the proper syntax via Sublime&rsquo;s default extension detection method.  Keep in mind though that other rules can override this.  As <code>extensions</code> isn&rsquo;t really a rule, but just a list that automatically adds the extension to the language settings file, a hit on this array won&rsquo;t currently stop ApplySyntax from processing more rules (this may change in the future).</p>
+<p>Apply syntax will create a file <code>ApplySyntax.ext-list</code> in your <code>User</code> folder and track which extension it added so that if you remove a rule, ApplySyntax will only remove the extensions it added to the language file in question.</p>
 <p>If you do not like this functionality, you can simply disable it by setting the following option in your settings file to <code>false</code>:</p>
 <div class="codehilite"><pre>    <span class="s2">&quot;add_exts_to_lang_settings&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
 </pre></div>
@@ -285,8 +291,8 @@
 </div>
 
 <!--
-MkDocs version  : 0.12.1
-Docs Build Date : 2015-04-23 02:12:47.690158
+MkDocs version  : 0.12.2
+Docs Build Date : 2015-04-25 03:08:20.616329
 -->
 </body>
 </html>
