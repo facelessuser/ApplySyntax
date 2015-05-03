@@ -32,6 +32,13 @@
   margin-bottom: 24px;
 }
 
+/* Block Quotes */
+.rst-content cite.quote {
+  display: block;
+  text-align: right;
+  font-style: italic;
+}
+
 /* Abbreviations */
 .rst-content abbr {
   cursor: help;
@@ -111,6 +118,10 @@
 .rst-content .task-list-item input {
   margin: 0 4px 0.25em -20px;
   vertical-align: middle;
+}
+
+.rst-content li>p {
+  margin: 12px;
 }
 
 /* Progress Bars */
@@ -489,6 +500,6 @@
   margin-bottom: .2em;
 }
 
-.rst-content .doctitle-info {
+.rst-content .doctitle+p {
   text-align: center;
 }
