@@ -125,13 +125,13 @@
 <p>Configuring and using ApplySyntax.</p>
 <hr />
 <h1 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Overview</h1>
-<p>ApplySyntax is based on the idea of creating rules for applying a certain syntaxes to specific files. You define the rules, the plugin checks them. The first one to pass wins.</p>
-<p>Create your own custom rules in <code>Packages/User/ApplySyntax.sublime-settings</code>. The easiest way to get started is to just copy the default settings file found in <code>Packages/ApplySyntax/ApplySyntax.sublime-settings</code> to your <code>Packages/User</code> directory and modify it to meet your needs. Make sure you remove the <code>default_syntaxes</code> key and create a new one called <code>syntaxes</code>. If you don&rsquo;t, you will overwrite the default syntaxes and they and you won&rsquo;t get updates to them.</p>
+<p>ApplySyntax is based on the idea of creating rules for applying certain syntaxes to specific files. You define the rules, the plugin checks them. The first one to pass wins.</p>
+<p>ApplySyntax allows you to create your own custom rules. The easiest way to get started is to create a settings file called <code>ApplySyntax.sublime-settings</code> in your <code>Packages/User</code> folder.  You can override the default settings in <code>Packages/ApplySyntax/ApplySyntax.sublime-settings</code> by setting them in your <code>Packages/User/ApplySyntax.sublime-settings</code> file. You can override any setting to meet your needs.  To append rules to the default rule set, you can create a key called <code>syntaxes</code> (modifying <code>default_syntaxes</code> will wipe out all the default rules and is not recommended as you won&rsquo;t get the latest updates).</p>
 <h1 id="creating-rules"><a name="user-content-creating-rules" href="#creating-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Creating Rules</h1>
 <p>Each rule is a dictionary within the syntax array.  Let&rsquo;s take a look at the top level parameters.</p>
 <h2 id="name"><a name="user-content-name" href="#name" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Name</h2>
 <p><code>name</code> is the syntax file that will be applied to a view which meets the criteria defined in the rule.</p>
-<p>For syntax files you must specify the path to the syntax file. The plugin is capable of supporting multiple levels of folder nesting if you need it to. For example, if you had all of your tmLanguage files for Rails organized in a folder like this: <code>Packages/Rails/Language/*.tmLanguage</code>, and you were looking to use the <code>Ruby Haml.tmLanguage</code> file, you would define the syntax to be:</p>
+<p>For syntax files you must specify the path to the syntax file. The plugin is capable of supporting multiple levels of folder nesting if you need it to. For example, if you had all of your tmLanguage files for Rails organized in a folder like this: <code>Packages/Rails/Language/*.tmLanguage</code>, and you were looking to use the <code>Ruby Haml.tmLanguage</code> file, the path to name translation would simply be: <code>Packages/Rails/Language/Ruby Haml.tmLanguage</code> -&gt; <code>Rails/Language/Ruby Haml</code>.</p>
 <div class="codehilite"><pre><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Rails/Language/Ruby Haml&quot;</span>
 </pre></div>
 
@@ -148,7 +148,7 @@
 
 <p>Notice that each syntax file has a different path since they come from completely different plugins.</p>
 <h2 id="extensions"><a name="user-content-extensions" href="#extensions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Extensions</h2>
-<p><code>extensions</code> is a convenience option to add a given set of extensions to your language settings file.  By adding the extension to the language settings file, sidebar icons in ST3 will display the proper icon, and files will load with the proper syntax via Sublime&rsquo;s default extension detection method.  Keep in mind though that other rules can override this.  As <code>extensions</code> isn&rsquo;t really a rule, but just a list which ApplySyntax uses to automatically add extension to the language settings file.  A hit (match) on this array won&rsquo;t currently stop ApplySyntax from processing more rules (this may change in the future).</p>
+<p><code>extensions</code> is a convenience option to add a given set of extensions to your language settings file.  By adding the extension to the language settings file, sidebar icons in ST3 will display the proper icon, and files will load with the proper syntax via Sublime&rsquo;s default extension detection method.  Keep in mind though that other rules can override this. <code>extensions</code> isn&rsquo;t really a rule, but just a list which ApplySyntax uses to automatically add extension to the language settings file.  A match within this array won&rsquo;t currently stop ApplySyntax from processing rules since it is not evaluated as a rule (this may change in the future).</p>
 <p>Apply syntax will create a file <code>ApplySyntax.ext-list</code> in your <code>User</code> folder and track which extension it added so that if you remove a rule, ApplySyntax will only remove the extensions it added to the language file in question.</p>
 <p>If you do not like this functionality, you can simply disable it by setting the following option in your settings file to <code>false</code>:</p>
 <div class="codehilite"><pre>    <span class="s2">&quot;add_exts_to_lang_settings&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -206,14 +206,14 @@
 
 <h2 id="rules"><a name="user-content-rules" href="#rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Rules</h2>
 <p><code>rules</code> is an array of rules that can be used to target specific files with your defined syntax file.  The rules are processed until the first rule matches, so order your rules in a way that makes sense to you.</p>
-<h3 id="filename-rule"><a name="user-content-filename-rule" href="#filename-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Filename Rule</h3>
-<p>Filename rule defines a filename with regex.  This uses the full file path.</p>
+<h3 id="file-name-rule"><a name="user-content-file-name-rule" href="#file-name-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>File Name Rule</h3>
+<p>A <code>file_name</code> rule defines a regex to match against the complete file path. The pattern is always anchored to the beginning of the path, as if there were an implicit <code>^</code> — so the pattern <code>/a/b/c</code> will match the file <code>/a/b/c/foo.py</code>, but not the file <code>/x/y/z/a/b/c/foo.py</code>. (You may include an explicit <code>^</code> at the beginning of the pattern, as some of the default rules do — but the result is the same either way.)</p>
 <div class="codehilite"><pre><span class="p">{</span><span class="s2">&quot;file_name&quot;</span><span class="o">:</span> <span class="s2">&quot;.*\\.xml(\\.dist)?$&quot;</span><span class="p">},</span>
 </pre></div>
 
 
 <h3 id="first-line-rule"><a name="user-content-first-line-rule" href="#first-line-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>First Line Rule</h3>
-<p>First line rule allows you to check if the first line of the files content matches a given regex.</p>
+<p>A <code>first_line</code> rule allows you to check whether the first line of the file&rsquo;s content matches a given regex. As with <code>file_name</code> <a href="#file-name-rule">rules</a>, the pattern is always anchored to the beginning of the line.</p>
 <div class="codehilite"><pre><span class="p">{</span><span class="s2">&quot;first_line&quot;</span><span class="o">:</span> <span class="s2">&quot;^&lt;\\?xml&quot;</span><span class="p">},</span>
 </pre></div>
 
@@ -330,7 +330,7 @@
 
 <!--
 MkDocs version      : 0.13.0.dev
-Docs Build Date UTC : 2015-05-03 03:04:07.501513
+Docs Build Date UTC : 2015-05-06 01:14:49.169259
 -->
 </body>
 </html>
