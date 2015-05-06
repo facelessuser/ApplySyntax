@@ -111,6 +111,15 @@
         //     ]
         // },
         {
+            // Meteor templates follow Handlebars syntax, but must end in .html; but they also always begin with `<template name=`
+            "name": "Handlebars/Handlebars",
+            "match": "all",
+            "rules": [
+                {"file_name": ".*\\.html$"},
+                {"first_line": "^<template name="}
+            ]
+        },
+        {
             // Emblem syntax matches Ruby Slim
             "syntax": "Ruby Slim/Syntaxes/Ruby Slim",
             "extensions": ["emblem"]
