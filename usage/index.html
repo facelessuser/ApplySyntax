@@ -130,7 +130,7 @@
 <h1 id="creating-rules"><a name="user-content-creating-rules" href="#creating-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Creating Rules</h1>
 <p>Each rule is a dictionary within the syntax array.  Let&rsquo;s take a look at the top level parameters.</p>
 <h2 id="syntax"><a name="user-content-syntax" href="#syntax" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Syntax</h2>
-<p><code>syntax</code> is the syntax file that will be applied to a view which meets the criteria defined in the rule.</p>
+<p>The <code>syntax</code> attribute is the syntax file that will be applied to a view which meets the criteria defined in the rule.</p>
 <p>For syntax files you must specify the path to the syntax file. The plugin is capable of supporting multiple levels of folder nesting if you need it to. For example, if you had all of your tmLanguage files for Rails organized in a folder like this: <code>Packages/Rails/Language/*.tmLanguage</code>, and you were looking to use the <code>Ruby Haml.tmLanguage</code> file, the path to name translation would simply be: <code>Packages/Rails/Language/Ruby Haml.tmLanguage</code> -&gt; <code>Rails/Language/Ruby Haml</code>.</p>
 <div class="codehilite"><pre><span class="s2">&quot;syntax&quot;</span><span class="o">:</span> <span class="s2">&quot;Rails/Language/Ruby Haml&quot;</span>
 </pre></div>
@@ -152,15 +152,22 @@
 <p>The previous name for this key was <code>name</code> and has been deprecated and will be removed in the future.</p>
 </div>
 <h2 id="extensions"><a name="user-content-extensions" href="#extensions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Extensions</h2>
-<p><code>extensions</code> is an easy way define extensions to apply a syntax to.  &lsquo;extensions&rsquo; is an array of strings where each string is an extension.  No <code>.</code> is needed when defining extensions, unless it is desired to target a dot file like <code>.gitignore</code>, then you would include the <code>.</code>.</p>
-<p><code>extensions</code> is run before all other rules, and it never takes part in &ldquo;<a href="#match">match all</a>&rdquo; rule sets as it is run separate and before normal rule sets; if an extension is matched here, all other rules will be skipped.</p>
-<p>An added benefit of <code>extensions</code> is if you are using ST3 and set <a href="#add-extensions-to-language-settings"><code>add_exts_to_lang_settings</code></a> to <code>true</code>, ApplySyntax will add the extensions to the specified syntax language&rsquo;s settings file in your <code>User</code> folder.  By doing this, Sublime Text will be able to show the associated icon for the file type in the sidebar.  Apply syntax will also create a file <code>ApplySyntax.ext-list</code> in your <code>User</code> folder and track which extension it added so that if you remove a rule, ApplySyntax will only remove the extensions it added to the language file in question. If you do not like this functionality, you can simply disable <code>add_exts_to_lang_settings</code> by it to <code>false</code>.</p>
+<p>The <code>extensions</code> attribute is used to define extensions to apply a syntax to.  <code>extensions</code> is an array of strings where each string is an extension.  No <code>.</code> is needed when defining extensions, unless it is desired to target a dot file like <code>.gitignore</code>, then you would include the <code>.</code>.</p>
+<div class="codehilite"><pre>    <span class="p">{</span>
+        <span class="s2">&quot;syntax&quot;</span><span class="o">:</span> <span class="s2">&quot;YAML/YAML&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;extensions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;.gemrc&quot;</span><span class="p">,</span> <span class="s2">&quot;yml&quot;</span><span class="p">,</span> <span class="s2">&quot;yml.dist&quot;</span><span class="p">]</span>
+    <span class="p">},</span>
+</pre></div>
+
+
+<p><code>extensions</code> is evaluated before all other rules, and it never takes part in &ldquo;<a href="#match">match all</a>&rdquo; rule sets as it is run separate from the normal rule sets; if an extension is matched here, all other rules will be skipped.</p>
+<p>An added benefit of <code>extensions</code>, if you are using <abbr title="Sublime Text 3">ST3</abbr> and set <a href="#add-extensions-to-language-settings"><code>add_exts_to_lang_settings</code></a> to <code>true</code>, is that ApplySyntax will add the extensions to the specified syntax language&rsquo;s settings file in your <code>User</code> folder.  By doing this, Sublime Text will be able to show the associated icon for the file type in the sidebar.  Apply syntax will also create a file <code>ApplySyntax.ext-list</code> in your <code>User</code> folder and track which extension it added so that if you remove a rule, ApplySyntax will only remove the extensions it added to the language file in question. If you do not like this functionality, you can simply disable <code>add_exts_to_lang_settings</code> by setting it to <code>false</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code>add_exts_to_lang_settings</code> will not be applied to <code>extensions</code> found in a <a href="#project-specific-rules">project specific rule</a>, as project specific rules are not global, but the effects of <code>add_exts_to_lang_settings</code> are global.</p>
 </div>
 <h2 id="match"><a name="user-content-match" href="#match" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Match</h2>
-<p><code>match</code> is a setting that you either include or omit.  When included, you set it to <code>all</code>.  When set, all rules defined must be met for a match to be considered successful.  <code>match</code> ignores the <a href="#extensions"><code>extensions</code></a> key as <code>extensions</code> never take part in &lsquo;match all&rsquo; rule sets.  If you want to include an extension rule in a &lsquo;match all&rsquo; rule set, then a <a href="#file-path-rule"><code>file_path</code></a> rule should be used.</p>
+<p><code>match</code> is a setting that you either include or omit.  When included, you set it to <code>all</code>.  When set, all rules defined must be met for a match to be considered successful.  <code>match</code> ignores the <a href="#extensions"><code>extensions</code></a> key as <code>extensions</code> never take part in &ldquo;match all&rdquo; rule sets.  If you want to include an extension rule in a &ldquo;match all&rdquo; rule set, then a <a href="#file-path-rule"><code>file_path</code></a> rule should be used.</p>
 <div class="codehilite"><pre>    <span class="s2">&quot;match&quot;</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span>
 </pre></div>
 
@@ -347,7 +354,7 @@
 
 <!--
 MkDocs version      : 0.13.0.dev
-Docs Build Date UTC : 2015-05-06 15:11:25.859664
+Docs Build Date UTC : 2015-05-07 00:58:31.514190
 -->
 </body>
 </html>
