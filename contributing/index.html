@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Contributing & Support - ApplySyntax Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_custom.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> ApplySyntax Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">About ApplySyntax</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../installation/">Installation</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../usage/">User Guide</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Contributing & Support</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#contributing-support">Contributing  Support</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#overview">Overview</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#bug-reports">Bug Reports</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#reviewing-code">Reviewing Code</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#pull-requests">Pull Requests</a></li>
+                
+                    <li><a class="toctree-l4" href="#running-validation-tests">Running Validation Tests</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#documentation-improvements">Documentation Improvements</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">ApplySyntax Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Contributing & Support</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/facelessuser/ApplySyntax" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 class="doctitle" id="contributing-support"><a name="user-content-contributing-support" href="#contributing-support" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Contributing &amp; Support</h1>
+<p>Steps for contributing and getting support.</p>
+<hr />
+<h1 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Overview</h1>
+<table>
+<thead>
+<tr>
+<th>Sublime Versions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><abbr title="Sublime Text 2">ST2</abbr>&nbsp;&lt;=&nbsp;version&nbsp;&lt;&nbsp;<abbr title="Sublime Text 3">ST3</abbr></td>
+<td>Supported on a separate branch, but not actively.  Any further fixes or enhancements must come from the community.  Issues for versions less than <abbr title="Sublime Text 3">ST3</abbr> will not be addressed moving forward by me.  Pull requests are welcome for back-porting features, enhancements, or fixes to the old branch, but the content of the pull <strong>must</strong> already exist on the main, actively developed branch.  I will not allow an older branch to exceed the main branch in regards to functionality.</td>
+</tr>
+<tr>
+<td><abbr title="Sublime Text 3">ST3</abbr></td>
+<td>Fully supported and actively maintained.</td>
+</tr>
+</tbody>
+</table>
+<p>Contribution from the community is encouraged and can be done in a variety of ways:</p>
+<ul>
+<li>Bug reports.</li>
+<li>Reviewing code.</li>
+<li>Code patches via pull requests.</li>
+<li>Documentation improvements via pull requests.</li>
+</ul>
+<h1 id="bug-reports"><a name="user-content-bug-reports" href="#bug-reports" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bug Reports</h1>
+<ol>
+<li>
+<p>Please <strong>read the documentation</strong> and <strong>search the issue tracker</strong> to try to find the answer to your question <strong>before</strong> posting an issue.</p>
+</li>
+<li>
+<p>When creating an issue on the repository, please provide as much info as possible:</p>
+<ul>
+<li>Sublime Text build.</li>
+<li>Operating system.</li>
+<li>Errors in console.</li>
+<li>Detailed description of the problem.</li>
+<li>Examples for reproducing the error.  You can post pictures, but if specific text or code is required to reproduce the issue, please provide the text in a plain text format for easy copy/paste.</li>
+</ul>
+<p>The more info provided the greater the chance someone will take the time to answer, implement, or fix the issue.</p>
+</li>
+<li>
+<p>Be prepared to answer questions and provide additional information if required.  Issues in which the creator refuses to respond to follow up questions will be marked as stale and closed.</p>
+</li>
+</ol>
+<h1 id="reviewing-code"><a name="user-content-reviewing-code" href="#reviewing-code" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Reviewing Code</h1>
+<p>Take part in reviewing pull requests and/or reviewing direct commits.  Make suggestions to improve the code and discuss solutions to overcome weakness in the algorithm.</p>
+<h1 id="pull-requests"><a name="user-content-pull-requests" href="#pull-requests" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Pull Requests</h1>
+<p>Pull requests are welcome, and if you plan on contributing directly to the code, there are a couple of things to be mindful of.</p>
+<p>Continuous integration tests on are run on all pull requests and commits via Travis CI.  When making a pull request, the tests will automatically be run, and the request must pass to be accepted.  You can (and should) run these tests before pull requesting.  If it is not possible to run these tests locally, they will be run when the pull request is made, but it is strongly suggested that requesters make an effort to verify before requesting to allow for a quick, smooth merge.</p>
+<p>Feel free to use a virtual environment if you are concerned about installing any of the Python packages.  In the future, I may use tox, but as I currently only test on Python 3.3, I wanted to keep things simple.</p>
+<h2 id="running-validation-tests"><a name="user-content-running-validation-tests" href="#running-validation-tests" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Running Validation Tests</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you are running Sublime on a OSX or Linux/Unix system, you run all tests by by running the shell script (assuming you have installed your environment fulfills all requirements below):</p>
+<div class="codehilite"><pre>chmod +x run_tests.sh
+./run_tests.sh
+</pre></div>
+
+
+</div>
+<p>There are a couple of dependencies that must be present before running the tests.</p>
+<ol>
+<li>
+<p>As <abbr title="Sublime Text 3">ST3</abbr> is the only current actively supported version, Python 3.3 must be used to validate the tests.</p>
+</li>
+<li>
+<p>Unit tests are run with <code>nose</code>.  You can install nose via:</p>
+<div class="codehilite"><pre>pip install nose
+</pre></div>
+
+
+<p>The tests should be run from the root folder of the plugin by using the following command:</p>
+<div class="codehilite"><pre>nosetests .
+</pre></div>
+
+
+</li>
+<li>
+<p>Linting is performed on the entire project with <code>flake8</code> and <code>flake8_docstrings</code>.  These can be installed via:</p>
+<div class="codehilite"><pre>pip install flake8
+pip install flake8_docstrings
+</pre></div>
+
+
+<p>Linting is performed with the following command:</p>
+<div class="codehilite"><pre>flake8 .
+</pre></div>
+
+
+</li>
+</ol>
+<h1 id="documentation-improvements"><a name="user-content-documentation-improvements" href="#documentation-improvements" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Documentation Improvements</h1>
+<p>A ton of time has been not only creating and supporting this plugin, but also spent making this documentation.  If you feel it is still lacking, show your appreciation for the plugin by helping to improve the documentation.  Help with documentation is always appreciated and can be done via pull requests.  There shouldn&rsquo;t be any need to run validation tests if only updating documentation.</p>
+<p>I currently use a combination of using [mkdocs][mkdocs.org] with my own custom Python Markdown <a href="https://github.com/facelessuser/pymdown-extensions">extensions</a> to render the docs.  You can preview the docs if you install these two packages.  The command for previewing the docs is <code>mkdocs serve</code>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../usage/" class="btn btn-neutral" title="User Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    
+    </p>
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../usage/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+
+</body>
+</html>
