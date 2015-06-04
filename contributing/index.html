@@ -72,22 +72,15 @@
             
                 <li class="toctree-l3"><a href="#contributing-support">Contributing  Support</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#overview">Overview</a></li>
+                    <li><a class="toctree-l4" href="#overview">Overview</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#bug-reports">Bug Reports</a></li>
+                    <li><a class="toctree-l4" href="#bug-reports">Bug Reports</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#reviewing-code">Reviewing Code</a></li>
+                    <li><a class="toctree-l4" href="#reviewing-code">Reviewing Code</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#pull-requests">Pull Requests</a></li>
+                    <li><a class="toctree-l4" href="#pull-requests">Pull Requests</a></li>
                 
-                    <li><a class="toctree-l4" href="#running-validation-tests">Running Validation Tests</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#documentation-improvements">Documentation Improvements</a></li>
+                    <li><a class="toctree-l4" href="#documentation-improvements">Documentation Improvements</a></li>
                 
             
             </ul>
@@ -134,7 +127,7 @@
                 <h1 class="doctitle" id="contributing-support"><a name="user-content-contributing-support" href="#contributing-support" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Contributing &amp; Support</h1>
 <p>Steps for contributing and getting support.</p>
 <hr />
-<h1 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Overview</h1>
+<h2 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Overview</h2>
 <table>
 <thead>
 <tr>
@@ -160,7 +153,7 @@
 <li>Code patches via pull requests.</li>
 <li>Documentation improvements via pull requests.</li>
 </ul>
-<h1 id="bug-reports"><a name="user-content-bug-reports" href="#bug-reports" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bug Reports</h1>
+<h2 id="bug-reports"><a name="user-content-bug-reports" href="#bug-reports" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bug Reports</h2>
 <ol>
 <li>
 <p>Please <strong>read the documentation</strong> and <strong>search the issue tracker</strong> to try to find the answer to your question <strong>before</strong> posting an issue.</p>
@@ -180,13 +173,13 @@
 <p>Be prepared to answer questions and provide additional information if required.  Issues in which the creator refuses to respond to follow up questions will be marked as stale and closed.</p>
 </li>
 </ol>
-<h1 id="reviewing-code"><a name="user-content-reviewing-code" href="#reviewing-code" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Reviewing Code</h1>
+<h2 id="reviewing-code"><a name="user-content-reviewing-code" href="#reviewing-code" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Reviewing Code</h2>
 <p>Take part in reviewing pull requests and/or reviewing direct commits.  Make suggestions to improve the code and discuss solutions to overcome weakness in the algorithm.</p>
-<h1 id="pull-requests"><a name="user-content-pull-requests" href="#pull-requests" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Pull Requests</h1>
+<h2 id="pull-requests"><a name="user-content-pull-requests" href="#pull-requests" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Pull Requests</h2>
 <p>Pull requests are welcome, and if you plan on contributing directly to the code, there are a couple of things to be mindful of.</p>
 <p>Continuous integration tests on are run on all pull requests and commits via Travis CI.  When making a pull request, the tests will automatically be run, and the request must pass to be accepted.  You can (and should) run these tests before pull requesting.  If it is not possible to run these tests locally, they will be run when the pull request is made, but it is strongly suggested that requesters make an effort to verify before requesting to allow for a quick, smooth merge.</p>
 <p>Feel free to use a virtual environment if you are concerned about installing any of the Python packages.  In the future, I may use tox, but as I currently only test on Python 3.3, I wanted to keep things simple.</p>
-<h2 id="running-validation-tests"><a name="user-content-running-validation-tests" href="#running-validation-tests" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Running Validation Tests</h2>
+<h3 id="running-validation-tests"><a name="user-content-running-validation-tests" href="#running-validation-tests" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Running Validation Tests</h3>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>If you are running Sublime on a OSX or Linux/Unix system, you run all tests by by running the shell script (assuming you have installed your environment fulfills all requirements below):</p>
@@ -228,7 +221,7 @@ pip install pep8-naming
 
 </li>
 </ol>
-<h1 id="documentation-improvements"><a name="user-content-documentation-improvements" href="#documentation-improvements" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Documentation Improvements</h1>
+<h2 id="documentation-improvements"><a name="user-content-documentation-improvements" href="#documentation-improvements" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Documentation Improvements</h2>
 <p>A ton of time has been not only creating and supporting this plugin, but also spent making this documentation.  If you feel it is still lacking, show your appreciation for the plugin by helping to improve the documentation.  Help with documentation is always appreciated and can be done via pull requests.  There shouldn&rsquo;t be any need to run validation tests if only updating documentation.</p>
 <p>I currently use a combination of using [mkdocs][mkdocs.org] with my own custom Python Markdown <a href="https://github.com/facelessuser/pymdown-extensions">extensions</a> to render the docs.  You can preview the docs if you install these two packages.  The command for previewing the docs is <code>mkdocs serve</code>.</p>
               

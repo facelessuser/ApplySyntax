@@ -65,23 +65,9 @@
             
                 <li class="toctree-l3"><a href="#user-guide">User Guide</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#overview">Overview</a></li>
+                    <li><a class="toctree-l4" href="#overview">Overview</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#creating-rules">Creating Rules</a></li>
-                
-                    <li><a class="toctree-l4" href="#syntax">Syntax</a></li>
-                
-                    <li><a class="toctree-l4" href="#extensions">Extensions</a></li>
-                
-                    <li><a class="toctree-l4" href="#match">Match</a></li>
-                
-                    <li><a class="toctree-l4" href="#rules">Rules</a></li>
-                
-                    <li><a class="toctree-l4" href="#project-specific-rules">Project Specific Rules</a></li>
-                
-                    <li><a class="toctree-l4" href="#settings-options">Settings Options</a></li>
+                    <li><a class="toctree-l4" href="#creating-rules">Creating Rules</a></li>
                 
             
             </ul>
@@ -135,12 +121,12 @@
                 <h1 class="doctitle" id="user-guide"><a name="user-content-user-guide" href="#user-guide" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>User Guide</h1>
 <p>Configuring and using ApplySyntax.</p>
 <hr />
-<h1 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Overview</h1>
+<h2 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Overview</h2>
 <p>ApplySyntax is based on the idea of creating rules for applying certain syntaxes to specific files. You define the rules, the plugin checks them. The first one to pass wins.</p>
 <p>ApplySyntax allows you to create your own custom rules. The easiest way to get started is to create a settings file called <code>ApplySyntax.sublime-settings</code> in your <code>Packages/User</code> folder.  You can override the default settings in <code>Packages/ApplySyntax/ApplySyntax.sublime-settings</code> by setting them in your <code>Packages/User/ApplySyntax.sublime-settings</code> file. You can override any setting to meet your needs.  To prepend rules to the default rule set, you can create a key called <code>syntaxes</code> (modifying <code>default_syntaxes</code> will wipe out all the default rules and is not recommended as you won&rsquo;t get the latest updates).</p>
-<h1 id="creating-rules"><a name="user-content-creating-rules" href="#creating-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Creating Rules</h1>
+<h2 id="creating-rules"><a name="user-content-creating-rules" href="#creating-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Creating Rules</h2>
 <p>Each rule is a dictionary within the syntax array.  Let&rsquo;s take a look at the top level parameters.</p>
-<h2 id="syntax"><a name="user-content-syntax" href="#syntax" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Syntax</h2>
+<h3 id="syntax"><a name="user-content-syntax" href="#syntax" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Syntax</h3>
 <p>The <code>syntax</code> attribute is the syntax file that will be applied to a view which meets the criteria defined in the rule.</p>
 <p>For syntax files you must specify the path to the syntax file. The plugin is capable of supporting multiple levels of folder nesting if you need it to. For example, if you had all of your tmLanguage files for Rails organized in a folder like this: <code>Packages/Rails/Language/*.tmLanguage</code>, and you were looking to use the <code>Ruby Haml.tmLanguage</code> file, the path to name translation would simply be: <code>Packages/Rails/Language/Ruby Haml.tmLanguage</code> -&gt; <code>Rails/Language/Ruby Haml</code>.</p>
 <div class="codehilite"><pre><span class="s2">&quot;syntax&quot;</span><span class="o">:</span> <span class="s2">&quot;Rails/Language/Ruby Haml&quot;</span>
@@ -162,7 +148,7 @@
 <p class="admonition-title">Deprecation</p>
 <p>The previous name for this key was <code>name</code> and has been deprecated and will be removed in the future.</p>
 </div>
-<h2 id="extensions"><a name="user-content-extensions" href="#extensions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Extensions</h2>
+<h3 id="extensions"><a name="user-content-extensions" href="#extensions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Extensions</h3>
 <p>The <code>extensions</code> attribute is used to define extensions to apply a syntax to.  <code>extensions</code> is an array of strings where each string is an extension.  No <code>.</code> is needed when defining extensions, unless it is desired to target a dot file like <code>.gitignore</code>, then you would include the <code>.</code>.</p>
 <div class="codehilite"><pre>    <span class="p">{</span>
         <span class="s2">&quot;syntax&quot;</span><span class="o">:</span> <span class="s2">&quot;YAML/YAML&quot;</span><span class="p">,</span>
@@ -177,7 +163,7 @@
 <p class="admonition-title">Note</p>
 <p><code>add_exts_to_lang_settings</code> will not be applied to <code>extensions</code> found in a <a href="#project-specific-rules">project specific rule</a>, as project specific rules are not global, but the effects of <code>add_exts_to_lang_settings</code> are global.</p>
 </div>
-<h2 id="match"><a name="user-content-match" href="#match" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Match</h2>
+<h3 id="match"><a name="user-content-match" href="#match" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Match</h3>
 <p><code>match</code> is a setting that you either include or omit.  When included, you set it to <code>all</code>.  When set, all rules defined must be met for a match to be considered successful.  <code>match</code> ignores the <a href="#extensions"><code>extensions</code></a> key as <code>extensions</code> never take part in &ldquo;match all&rdquo; rule sets.  If you want to include an extension rule in a &ldquo;match all&rdquo; rule set, then a <a href="#file-path-rule"><code>file_path</code></a> rule should be used.</p>
 <div class="codehilite"><pre>    <span class="s2">&quot;match&quot;</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span>
 </pre></div>
@@ -221,9 +207,9 @@
 </pre></div>
 
 
-<h2 id="rules"><a name="user-content-rules" href="#rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Rules</h2>
+<h3 id="rules"><a name="user-content-rules" href="#rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Rules</h3>
 <p><code>rules</code> is an array of rules that can be used to target specific files with your defined syntax file.  The rules are processed until the first rule matches, so order your rules in a way that makes sense to you.</p>
-<h3 id="file-path-rule"><a name="user-content-file-path-rule" href="#file-path-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>File Path Rule</h3>
+<h4 id="file-path-rule"><a name="user-content-file-path-rule" href="#file-path-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>File Path Rule</h4>
 <p>A <code>file_path</code> rule defines a regex to match against the complete file path. The pattern is always anchored to the beginning of the path, as if there were an implicit <code>^</code> — so the pattern <code>/a/b/c</code> will match the file <code>/a/b/c/foo.py</code>, but not the file <code>/x/y/z/a/b/c/foo.py</code>. (You may include an explicit <code>^</code> at the beginning of the pattern, as some of the default rules do — but the result is the same either way.)</p>
 <p>For backwards compatibility with older versions of ApplySyntax, the rule name <code>file_name</code> is also accepted, and functions exactly like <code>file_path</code>.</p>
 <div class="codehilite"><pre><span class="p">{</span><span class="s2">&quot;file_path&quot;</span><span class="o">:</span> <span class="s2">&quot;.*\\.xml(\\.dist)?$&quot;</span><span class="p">},</span>
@@ -234,13 +220,13 @@
 <p class="admonition-title">Deprecation</p>
 <p>The previous name for this key was <code>file_name</code> and has been deprecated and will be removed in the future.</p>
 </div>
-<h3 id="first-line-rule"><a name="user-content-first-line-rule" href="#first-line-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>First Line Rule</h3>
+<h4 id="first-line-rule"><a name="user-content-first-line-rule" href="#first-line-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>First Line Rule</h4>
 <p>A <code>first_line</code> rule allows you to check whether the first line of the file&rsquo;s content matches a given regex. As with <code>file_path</code> <a href="#file-path-rule">rules</a>, the pattern is always anchored to the beginning of the line.</p>
 <div class="codehilite"><pre><span class="p">{</span><span class="s2">&quot;first_line&quot;</span><span class="o">:</span> <span class="s2">&quot;^&lt;\\?xml&quot;</span><span class="p">},</span>
 </pre></div>
 
 
-<h3 id="interpreter-shebang"><a name="user-content-interpreter-shebang" href="#interpreter-shebang" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Interpreter (Shebang)</h3>
+<h4 id="interpreter-shebang"><a name="user-content-interpreter-shebang" href="#interpreter-shebang" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Interpreter (Shebang)</h4>
 <p>An <code>interpreter</code> rule does the same thing as a <code>first_line</code> rule that uses a regex to match an interpreter directive (shebang).  The difference being that ApplySyntax will construct the regex for you.</p>
 <p>So a <code>first_line</code> rule:</p>
 <div class="codehilite"><pre><span class="p">{</span><span class="s2">&quot;first_line&quot;</span><span class="o">:</span> <span class="s2">&quot;^#\\!(?:.+)ruby&quot;</span><span class="p">}</span>
@@ -257,7 +243,7 @@
 <p class="admonition-title">Deprecation</p>
 <p>The previous name for this key was <code>binary</code> and has been deprecated and will be removed in the future.</p>
 </div>
-<h3 id="function-rule"><a name="user-content-function-rule" href="#function-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Function Rule</h3>
+<h4 id="function-rule"><a name="user-content-function-rule" href="#function-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Function Rule</h4>
 <p>This is an example of using a custom function to decide whether or not to apply a syntax. The source file should be in a plugin folder. <code>name</code> is the function name and <code>source</code> is the file in which the function is contained; you must include the package it resides in, all sub-folders leading to the file, and the actual file name (extension not needed as it is assumed to be a python file).</p>
 <p>When this function is called, the full file path of the given file will be passed to it as the only argument. You are free to do whatever you want in your function, just return <code>True</code> or <code>False</code> to indicate whether a match was made.  But please be conscious of keeping it quick and light if possible.</p>
 <div class="codehilite"><pre><span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;is_rails_file&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;ApplySyntax/is_rails_file&quot;</span><span class="p">}}</span>
@@ -268,7 +254,7 @@
 <p class="admonition-title">Tip</p>
 <p>When placing a function rule module in a package, it is advised to put it in a sub-folder.  The sub-folder does not need an <code>__init__.py</code>, it just needs your module(s).</p>
 </div>
-<h3 id="content-rule"><a name="user-content-content-rule" href="#content-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Content Rule</h3>
+<h4 id="content-rule"><a name="user-content-content-rule" href="#content-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Content Rule</h4>
 <p>Sometimes a filename or first line search is just not enough and maybe a function rule is overkill.  In this case, maybe searching the content of a file can be enough.  You can search a file&rsquo;s content with regex for a specific token via the <code>contains</code> rule.</p>
 <div class="codehilite"><pre><span class="p">{</span><span class="s2">&quot;contains&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;script [^&gt;]*type=\&quot;text\\/x-handlebars\&quot;[^&gt;]*&gt;&quot;</span><span class="p">}</span>
 </pre></div>
@@ -279,7 +265,7 @@
 <p>It is recommended to pair <code>contains</code> rules with other rules via the <code class="codehilite"><span class="s2">&quot;match&quot;</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span></code> option to ensure you don&rsquo;t search every file (which can significantly slow down the editor); this will also help ensure get more reliable matches. If pairing with other rules as dependencies, it is advised to pair the <code>contains</code> rule after the other required rule(s) to ensure you search the content of as few files as possible.</p>
 <p>Also, try to use very specific regex to ensure you don&rsquo;t get false positives.</p>
 </div>
-<h2 id="project-specific-rules"><a name="user-content-project-specific-rules" href="#project-specific-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Project Specific Rules</h2>
+<h3 id="project-specific-rules"><a name="user-content-project-specific-rules" href="#project-specific-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Project Specific Rules</h3>
 <p>To define project specific syntaxes, just add <code>project_syntaxes</code> to your project file.  <code>project_syntaxes</code> is an array; just add your syntax rules to <code>project_syntaxes</code> just like you would add them to <code>syntaxes</code> in your user settings file, and ApplySyntax will prepend the rules to the beginning of your defined rules.  The order of rules is as follows: project &rarr; user &rarr; default.</p>
 <p>There is one difference between project specific rules and global rules.  In project rules, the <a href="#extensions"><code>extensions</code></a> key will not be applied to the associated syntax language settings file as project specific rules are not global, but language settings files are global.</p>
 <div class="codehilite"><pre>    <span class="s2">&quot;project_syntaxes&quot;</span><span class="o">:</span> <span class="p">[</span>
@@ -294,27 +280,27 @@
 </pre></div>
 
 
-<h2 id="settings-options"><a name="user-content-settings-options" href="#settings-options" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Settings Options</h2>
+<h3 id="settings-options"><a name="user-content-settings-options" href="#settings-options" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Settings Options</h3>
 <p>There are a couple of general settings found in <code>ApplySyntax.sublime-settings</code>.</p>
-<h3 id="re-raise-exceptions"><a name="user-content-re-raise-exceptions" href="#re-raise-exceptions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Re-Raise Exceptions</h3>
+<h4 id="re-raise-exceptions"><a name="user-content-re-raise-exceptions" href="#re-raise-exceptions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Re-Raise Exceptions</h4>
 <p>If an exception occurs when processing a function, this will re-raised the captured exception in Sublime&rsquo;s console so the user get feedback. This is really only useful to those writing functions. The average user shouldn&rsquo;t need this.  By default, the setting will be set to <code>false</code>.</p>
 <div class="codehilite"><pre>    <span class="s2">&quot;reraise_exceptions&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
 </pre></div>
 
 
-<h3 id="new-file-syntax"><a name="user-content-new-file-syntax" href="#new-file-syntax" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>New File Syntax</h3>
+<h4 id="new-file-syntax"><a name="user-content-new-file-syntax" href="#new-file-syntax" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>New File Syntax</h4>
 <p>If you want to have a syntax applied when new files are created, set <code>new_file_syntax</code> to the name of the syntax to use. The format is exactly the same as the <a href="#syntax"><code>syntax</code></a> parameter in the syntax rules mentioned earlier. For example, if you want to have a new file use JavaScript syntax, set <code>new_file_syntax</code> to <code>JavaScript/JavaScript</code>.  The default is <code>false</code>.</p>
 <div class="codehilite"><pre>    <span class="s2">&quot;new_file_syntax&quot;</span><span class="o">:</span> <span class="s2">&quot;JavaScript/JavaScript&quot;</span><span class="p">,</span>
 </pre></div>
 
 
-<h3 id="add-extensions-to-language-settings"><a name="user-content-add-extensions-to-language-settings" href="#add-extensions-to-language-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Add Extensions to Language Settings</h3>
+<h4 id="add-extensions-to-language-settings"><a name="user-content-add-extensions-to-language-settings" href="#add-extensions-to-language-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Add Extensions to Language Settings</h4>
 <p>To enable adding defined extensions to language settings, just set <code>add_exts_to_lang_settings</code> to <code>true</code>.  See <a href="#extensions">Extensions</a> for more info.</p>
 <div class="codehilite"><pre>    <span class="s2">&quot;add_exts_to_lang_settings&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
 </pre></div>
 
 
-<h3 id="troubleshooting-and-debugging"><a name="user-content-troubleshooting-and-debugging" href="#troubleshooting-and-debugging" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Troubleshooting and Debugging</h3>
+<h4 id="troubleshooting-and-debugging"><a name="user-content-troubleshooting-and-debugging" href="#troubleshooting-and-debugging" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Troubleshooting and Debugging</h4>
 <p>By default, the <code>debug</code> setting is turned on so that users have some form of visual feedback in the console that ApplySyntax is working.  This can be turned off by setting <code>debug</code> to <code>false</code>.  If developing, you can set <code>debug</code> to <code>verbose</code> to get even more info in the console.</p>
 <div class="codehilite"><pre>    <span class="c1">// Control level of logging in the console.</span>
     <span class="c1">// (true|false|&quot;verbose&quot;)</span>
