@@ -158,13 +158,13 @@
 
 
 <p><code>extensions</code> is evaluated before all other rules, and it never takes part in &ldquo;<a href="#match">match all</a>&rdquo; rule sets as it is run separate from the normal rule sets; if an extension is matched here, all other rules will be skipped.</p>
-<p>An added benefit of <code>extensions</code>, if you are using <abbr title="Sublime Text 3">ST3</abbr> and set <a href="#add-extensions-to-language-settings"><code>add_exts_to_lang_settings</code></a> to <code>true</code>, is that ApplySyntax will add the extensions to the specified syntax language&rsquo;s settings file in your <code>User</code> folder.  By doing this, Sublime Text will be able to show the associated icon for the file type in the sidebar.  Apply syntax will also create a file <code>ApplySyntax.ext-list</code> in your <code>User</code> folder and track which extension it added so that if you remove a rule, ApplySyntax will only remove the extensions it added to the language file in question. If you do not like this functionality, you can simply disable <code>add_exts_to_lang_settings</code> by setting it to <code>false</code>.</p>
+<p>An added benefit of <code>extensions</code>, if you are using <abbr title="Sublime Text 3">ST3</abbr> and set <a href="#add-extensions-to-language-settings">add_exts_to_lang_settings</a> to <code>true</code>, is that ApplySyntax will add the extensions to the specified syntax language&rsquo;s settings file in your <code>User</code> folder.  By doing this, Sublime Text will be able to show the associated icon for the file type in the sidebar.  Apply syntax will also create a file <code>ApplySyntax.ext-list</code> in your <code>User</code> folder and track which extension it added so that if you remove a rule, ApplySyntax will only remove the extensions it added to the language file in question. If you do not like this functionality, you can simply disable <code>add_exts_to_lang_settings</code> by setting it to <code>false</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code>add_exts_to_lang_settings</code> will not be applied to <code>extensions</code> found in a <a href="#project-specific-rules">project specific rule</a>, as project specific rules are not global, but the effects of <code>add_exts_to_lang_settings</code> are global.</p>
 </div>
 <h3 id="match"><a name="user-content-match" href="#match" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Match</h3>
-<p><code>match</code> is a setting that you either include or omit.  When included, you set it to <code>all</code>.  When set, all rules defined must be met for a match to be considered successful.  <code>match</code> ignores the <a href="#extensions"><code>extensions</code></a> key as <code>extensions</code> never take part in &ldquo;match all&rdquo; rule sets.  If you want to include an extension rule in a &ldquo;match all&rdquo; rule set, then a <a href="#file-path-rule"><code>file_path</code></a> rule should be used.</p>
+<p><code>match</code> is a setting that you either include or omit.  When included, you set it to <code>all</code>.  When set, all rules defined must be met for a match to be considered successful.  <code>match</code> ignores the <a href="#extensions">extensions</a> key as <code>extensions</code> never take part in &ldquo;match all&rdquo; rule sets.  If you want to include an extension rule in a &ldquo;match all&rdquo; rule set, then a <a href="#file-path-rule">file_path</a> rule should be used.</p>
 <div class="codehilite"><pre>    <span class="s2">&quot;match&quot;</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span>
 </pre></div>
 
@@ -267,7 +267,7 @@
 </div>
 <h3 id="project-specific-rules"><a name="user-content-project-specific-rules" href="#project-specific-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Project Specific Rules</h3>
 <p>To define project specific syntaxes, just add <code>project_syntaxes</code> to your project file.  <code>project_syntaxes</code> is an array; just add your syntax rules to <code>project_syntaxes</code> just like you would add them to <code>syntaxes</code> in your user settings file, and ApplySyntax will prepend the rules to the beginning of your defined rules.  The order of rules is as follows: project &rarr; user &rarr; default.</p>
-<p>There is one difference between project specific rules and global rules.  In project rules, the <a href="#extensions"><code>extensions</code></a> key will not be applied to the associated syntax language settings file as project specific rules are not global, but language settings files are global.</p>
+<p>There is one difference between project specific rules and global rules.  In project rules, the <a href="#extensions">extensions</a> key will not be applied to the associated syntax language settings file as project specific rules are not global, but language settings files are global.</p>
 <div class="codehilite"><pre>    <span class="s2">&quot;project_syntaxes&quot;</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="s2">&quot;syntax&quot;</span><span class="o">:</span> <span class="s2">&quot;XML/XML&quot;</span><span class="p">,</span>
@@ -289,7 +289,7 @@
 
 
 <h4 id="new-file-syntax"><a name="user-content-new-file-syntax" href="#new-file-syntax" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>New File Syntax</h4>
-<p>If you want to have a syntax applied when new files are created, set <code>new_file_syntax</code> to the name of the syntax to use. The format is exactly the same as the <a href="#syntax"><code>syntax</code></a> parameter in the syntax rules mentioned earlier. For example, if you want to have a new file use JavaScript syntax, set <code>new_file_syntax</code> to <code>JavaScript/JavaScript</code>.  The default is <code>false</code>.</p>
+<p>If you want to have a syntax applied when new files are created, set <code>new_file_syntax</code> to the name of the syntax to use. The format is exactly the same as the <a href="#syntax">syntax</a> parameter in the syntax rules mentioned earlier. For example, if you want to have a new file use JavaScript syntax, set <code>new_file_syntax</code> to <code>JavaScript/JavaScript</code>.  The default is <code>false</code>.</p>
 <div class="codehilite"><pre>    <span class="s2">&quot;new_file_syntax&quot;</span><span class="o">:</span> <span class="s2">&quot;JavaScript/JavaScript&quot;</span><span class="p">,</span>
 </pre></div>
 
