@@ -481,6 +481,8 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
 
             if 'function' in rule:
                 result = self.function_matches(rule)
+            elif 'file_size' in rule:
+                result = self.filesize_matches(rule)
             else:
                 result = self.regexp_matches(rule)
 
@@ -558,6 +560,34 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
                 raise
             else:
                 return False
+
+    def filesize_matches(self, rule):
+        """Perform file_size match"""
+
+        size_rule = rule.get("file_size")
+        file_size = os.path.getsize(self.file_name)
+
+        rule_len = len(size_rule)
+        if (rule_len <= 1):
+            return False
+
+        operation = size_rule[0]
+        if operation not in ['>', '<', '=']:
+            return False
+
+        try:
+            size = int(size_rule[1:])
+        except ValueError:
+            return False
+
+        if operation == '>' and file_size > size:
+            return True
+        elif operation == '<' and file_size < size:
+            return True
+        elif operation == '=' and file_size == size:
+            return True
+        else:
+            return False
 
     def regexp_matches(self, rule):
         """Perform regex matches."""
