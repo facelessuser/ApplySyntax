@@ -562,7 +562,7 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
                 return False
 
     def filesize_matches(self, rule):
-        """Perform file_size match"""
+        """Perform file_size match."""
 
         size_rule = rule.get("file_size")
         file_size = os.path.getsize(self.file_name)
