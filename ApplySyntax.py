@@ -565,8 +565,6 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
         """Perform file_size match."""
 
         size_rule = rule.get("file_size")
-        file_size = os.path.getsize(self.file_name)
-
         rule_len = len(size_rule)
         if (rule_len <= 1):
             return False
@@ -579,6 +577,8 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
             size = int(size_rule[1:])
         except ValueError:
             return False
+
+        file_size = os.path.getsize(self.file_name)
 
         if operation == '>' and file_size > size:
             return True
