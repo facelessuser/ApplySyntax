@@ -244,15 +244,28 @@
 <p>The previous name for this key was <code>binary</code> and has been deprecated and will be removed in the future.</p>
 </div>
 <h4 id="function-rule"><a name="user-content-function-rule" href="#function-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Function Rule</h4>
-<p>This is an example of using a custom function to decide whether or not to apply a syntax. The source file should be in a plugin folder. <code>name</code> is the function name and <code>source</code> is the file in which the function is contained; you must include the package it resides in, all sub-folders leading to the file, and the actual file name (extension not needed as it is assumed to be a python file).</p>
-<p>When this function is called, the full file path of the given file will be passed to it as the only argument. You are free to do whatever you want in your function, just return <code>True</code> or <code>False</code> to indicate whether a match was made.  But please be conscious of keeping it quick and light if possible.</p>
-<div class="codehilite"><pre><span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;is_rails_file&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;ApplySyntax/is_rails_file&quot;</span><span class="p">}}</span>
+<p>This is an example of using a custom function to decide whether or not to apply a syntax. This is done via ApplySyntax plugins.  The plugin file should be under a plugin folder.</p>
+<p>The function rule takes two parameters.  The first is <code>source</code> and is the plugin source file.  It is defined as if you were importing a python plugin.  If you had a plugin in <code>Packages/ApplySyntax/as_plugins/is_rails_file.py</code>, it would be defined under <code>source</code> as <code>ApplySyntax.as_plugins.is_rails_file</code>.  Function rules still support the legacy way: <code>ApplySyntax/as_plugins/is_rails_file</code>, but it is recommended to use the dot notation as it makes more sense from a Python import perspective.</p>
+<p>The second parameter is <code>args</code> and is optional. <code>args</code> is a dictionary of the keyword arguments the function rule plugin accepts.</p>
+<p>The plugin must have a function defined as <code>syntax_test</code>. <code>syntax_test</code> will be the function called within the plugin file and accepts an argument <code>file_path</code> (which is the full path to the file being evaluated), and any custom keyword arguments desired by the user.  The plugin must return either <code>True</code> or <code>False</code>.</p>
+<div class="codehilite"><pre><span class="p">{</span><span class="s2">&quot;function&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;User.plugins.myplugin&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">}}}</span>
+</pre></div>
+
+
+<p>Example:</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">syntax_test</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">foo</span><span class="p">):</span>
+    <span class="c"># Some test logic</span>
+    <span class="k">return</span> <span class="bp">False</span> <span class="c"># True or False</span>
 </pre></div>
 
 
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>When placing a function rule module in a package, it is advised to put it in a sub-folder.  The sub-folder does not need an <code>__init__.py</code>, it just needs your module(s).</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Deprecation</p>
+<p>Previously, function rules allowed for a <code>name</code> attribute which allowed the user to specify the function name to call in the plugin.  In the current version, ApplySyntax looks for a function named <code>syntax_test</code>.  While <code>name</code> is still currently supported, it has been deprecated, and will be removed in the future.</p>
 </div>
 <h4 id="content-rule"><a name="user-content-content-rule" href="#content-rule" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Content Rule</h4>
 <p>Sometimes a filename or first line search is just not enough and maybe a function rule is overkill.  In this case, maybe searching the content of a file can be enough.  You can search a file&rsquo;s content with regex for a specific token via the <code>contains</code> rule.</p>
