@@ -128,7 +128,7 @@
 <p>Each rule is a dictionary within the syntax array.  Let&rsquo;s take a look at the top level parameters.</p>
 <h3 id="syntax"><a name="user-content-syntax" href="#syntax" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Syntax</h3>
 <p>The <code>syntax</code> attribute is the syntax file that will be applied to a view which meets the criteria defined in the rule.</p>
-<p>For syntax files you must specify the path to the syntax file. The plugin is capable of supporting multiple levels of folder nesting if you need it to. For example, if you had all of your tmLanguage files for Rails organized in a folder like this: <code>Packages/Rails/Language/*.tmLanguage</code>, and you were looking to use the <code>Ruby Haml.tmLanguage</code> file, the path to name translation would simply be: <code>Packages/Rails/Language/Ruby Haml.tmLanguage</code> -&gt; <code>Rails/Language/Ruby Haml</code>.</p>
+<p>For syntax files you must specify the path to the syntax file. The plugin is capable of supporting multiple levels of folder nesting if you need it to. For example, if you had all of your tmLanguage files for Rails organized in a folder like this: <code>Packages/Rails/Language/*.tmLanguage</code>, and you were looking to use the <code>Ruby Haml.tmLanguage</code> file, the path to name translation would simply be: <code>Packages/Rails/Language/Ruby Haml.tmLanguage</code> &rarr; <code>Rails/Language/Ruby Haml</code>.</p>
 <div class="codehilite"><pre><span class="s2">&quot;syntax&quot;</span><span class="o">:</span> <span class="s2">&quot;Rails/Language/Ruby Haml&quot;</span>
 </pre></div>
 
@@ -144,6 +144,11 @@
 
 
 <p>Notice that each syntax file has a different path since they come from completely different plugins.</p>
+<p>Lastly, if using Package Control, it is likely that most, if not all, of your packages will be zipped with the extension <code>.sublime-package</code> in the <code>Installed Packages</code> folder instead of <code>Packages</code>.  These will be handled exactly like plugins installed under <code>Packages</code>.  The one difference is that you treat the zip bundle as a folder without the <code>.sublime-package</code> extension.  So if we had a syntax file located in a zipped bundle: <code>Installed Packages/Rails.sublime-package/Language/Ruby Haml.tmLanguage</code> &rarr; <code>Rails/Language/Ruby Haml</code>.</p>
+<div class="codehilite"><pre><span class="s2">&quot;syntax&quot;</span><span class="o">:</span> <span class="s2">&quot;Rails/Language/Ruby Haml&quot;</span>
+</pre></div>
+
+
 <div class="admonition warning">
 <p class="admonition-title">Deprecation</p>
 <p>The previous name for this key was <code>name</code> and has been deprecated and will be removed in the future.</p>
