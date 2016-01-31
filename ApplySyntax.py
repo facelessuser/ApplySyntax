@@ -321,6 +321,9 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
         """Get the settings."""
 
         active_settings = self.view.settings() if self.view else {}
+        if name.startswith("project_"):
+            project_settings = sublime.active_window().project_data()
+            return project_settings.get(name, default)
         return active_settings.get(name, SETTINGS.get(name, default))
 
     def get_project_setting(self, name, default=None):
