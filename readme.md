@@ -3,6 +3,9 @@
 # ApplySyntax
 ApplySyntax is a plugin for Sublime Text 2 and 3 that allows you to detect and apply the syntax of files that might not otherwise be detected properly. For example, files with the `.rb` extension are usually Ruby files, but when they are found in a Rails project, they could be RSpec spec files, Cucumber step files, Ruby on Rails files (controllers, models, etc), or just plain Ruby files. This is actually the problem I was trying to solve when I started working on this plugin.
 
+### Note
+It forces predefined extensions, always overriding the user settings on the usual extension setting files as `PHP.sublime-settings`. To use different extensions, you must edit the package settings by yourself going on `Preferences -> Packages Settings -> ApplySyntax`. For example, if you need only `*.inc` files being used as anything else than PHP.
+
 # Credits
 DetectSyntax was originally created by phillipkoebbe.  In his words, these are his credits:
 
