@@ -122,6 +122,17 @@ For backwards compatibility with older versions of ApplySyntax, the rule name `f
 !!! warning "Deprecation"
     The previous name for this key was `file_name` and has been deprecated and will be removed in the future.
 
+#### File Size Rule
+A `file_size` rule allows you to define when a syntax should be applied based on the current file's size. This can be useful for applying a plain text syntax to very large files in order to prevent slowdown.
+
+Each `file_size` rule must start with a `>`, `<`, or `=` character to denote the comparison operation, followed by an integer representing the number of *bytes* to compare against the actual file's size.
+
+For example, this rule would apply to all files over 100 megabytes:
+
+```js
+{"file_size": ">104857600"}
+```
+
 #### First Line Rule
 A `first_line` rule allows you to check whether the first line of the file's content matches a given regex. As with `file_path` [rules](#file-path-rule), the pattern is always anchored to the beginning of the line.
 
