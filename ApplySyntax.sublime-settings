@@ -153,8 +153,8 @@
         {
             "syntax": "Git Formats/Git Config",
             "rules": [
-                {"file_path": ".*/\\.git/config"},
-                {"file_path": ".*\\\\\\.git\\\\config"}
+                {"file_path": ".*/\\.git/config$"},
+                {"file_path": ".*\\\\\\.git\\\\config$"}
             ]
         },
         {
