@@ -32,14 +32,8 @@
             "extensions": ["mxml"]
         },
         {
-            // I put XML next because of files like *.tmLanguage. It is unlikely
-            // that this rule will result in a false positive, meaning if it
-            // matches, you probably want the XML syntax
             "syntax": "XML/XML",
-            "extensions": ["xml.dist"],
-            "rules": [
-                {"first_line": "^<\\?xml"}
-            ]
+            "extensions": ["xml.dist"]
         },
         {
             // The Cucumber and RSpec rules come before Rails and Ruby because they end
