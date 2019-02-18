@@ -58,7 +58,7 @@ The `extensions` attribute is used to define extensions to apply a syntax to.  `
 
 An added benefit of `extensions`, if you are using ST3 and set [`add_exts_to_lang_settings`](#add-extensions-to-language-settings) to `true`, is that ApplySyntax will add the extensions to the specified syntax language's settings file in your `User` folder.  By doing this, Sublime Text will be able to show the associated icon for the file type in the sidebar.  Apply syntax will also create a file `ApplySyntax.ext-list` in your `User` folder and track which extension it added so that if you remove a rule, ApplySyntax will only remove the extensions it added to the language file in question. If you do not like this functionality, you can simply disable `add_exts_to_lang_settings` by setting it to `false`.
 
-!!! note "Note":
+!!! note "Note"
     `add_exts_to_lang_settings` will not be applied to `extensions` found in a [project specific rule](#project-specific-rules), as project specific rules are not global, but the effects of `add_exts_to_lang_settings` are global.
 
 ### Match
