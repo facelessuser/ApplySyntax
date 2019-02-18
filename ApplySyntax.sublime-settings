@@ -22,6 +22,17 @@
     // (true|false|"verbose")
     "debug": true,
 
+    // Add your own syntax application rules here, to be executed
+    // AFTER the "default_syntaxes" rules.
+    "syntaxes": [],
+
+    // Add your own syntax application rules here, to be executed
+    // BEFORE the "default_syntaxes" rules.
+    "prepend_sytaxes": [],
+
+    // These are the package default syntax rules. If you find
+    // that "default_syntaxes" is intercepting one of your custom
+    // "syntaxes" rules, try moving that rule to "prepend_syntaxes"
     "default_syntaxes": [
         {
             // The MXML rules come before the generic XML rules because they
