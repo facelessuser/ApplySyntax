@@ -1,3 +1,7 @@
+## ApplySyntax 2.5.4
+
+- **FIX**: Fix extension compare and order of evaluation.
+
 ## ApplySyntax 2.5.3
 
 - **FIX**: Use proper Bash syntax.

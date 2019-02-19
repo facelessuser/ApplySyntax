@@ -224,7 +224,7 @@ def update_extenstions(lst):
     ext_map = {}
 
     # Walk the entries
-    for entry in SETTINGS.get("default_syntaxes", []) + SETTINGS.get("syntaxes", []):
+    for entry in SETTINGS.get("syntaxes", []) + SETTINGS.get("default_syntaxes", []):
         # Grab the extensions from each relevant rule
         ext = []
         if "extensions" in entry:
@@ -544,8 +544,9 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
         extensions = rule.get('extensions', [])
         file_name = os.path.basename(self.file_name).lower()
         for extension in extensions:
-            dot_file_match = extension.startswith('.') and extension == file_name
-            if dot_file_match or file_name.endswith('.' + extension):
+            ext = extension.lower()
+            dot_file_match = ext.startswith('.') and ext == file_name
+            if dot_file_match or file_name.endswith('.' + ext):
                 match = True
                 break
         return match
