@@ -26,13 +26,13 @@
 
 ## ApplySyntax 2.4.0
 
-- **NEW**: Added TypoScript rules.
+- **NEW**: Added `TypoScript` rules.
 - **NEW**: Restrict phantoms to 3124+.
 - **NEW**: Support commands.
 
 ## ApplySyntax 2.3.1
 
-- **FIX**: Config tweaks to YAML rules.
+- **FIX**: Configuration tweaks to YAML rules.
 
 ## ApplySyntax 2.3.0
 

@@ -57,7 +57,7 @@ def ensure_user_settings():
 
 
 def get_all_syntax_files():
-    """Find all sublime-syntax and tmLanguage files."""
+    """Find all `sublime-syntax` and `tmLanguage` files."""
 
     syntax_files = []
     if USE_ST_SYNTAX:
@@ -79,7 +79,7 @@ def get_lang_hash():
     """
     Return the hash of the loaded languages in Sublime.
 
-    Return the actual language frozenset (hashable) as well.
+    Return the actual language `frozenset` (hashable) as well.
     """
 
     def was_seen(item, item_set):
@@ -92,7 +92,7 @@ def get_lang_hash():
             seen_item = False
         return seen_item
 
-    # Strip off tmlanguage so we don't have to worry about case of extension
+    # Strip off `tmlanguage` so we don't have to worry about case of extension
     seen = set()
     lst = frozenset(
         [os.path.splitext(x)[0] for x in get_all_syntax_files() if not was_seen(x, seen)]
@@ -134,7 +134,7 @@ def update_language_extensions(ext_added):
 
 
 def map_extensions(ext, lst, names, ext_map, ext_added):
-    """Create mappings to help with updating and prunning extensions."""
+    """Create mappings to help with updating and pruning extensions."""
 
     # Always deal with language names as a series of names
     if not isinstance(names, list):
@@ -166,14 +166,14 @@ def prune_language_extensions(ext_map, ext_added):
     """
     Prune dead extensions that were added by ApplySyntax (AS), but are no longer defined in AS.
 
-    exts        - sublime's extension list for the given language
-    old_ext     - The current saved list of AS added extension
-    new_ext     - The current tracked list of extensions found defined by AS
-    bad_ext     - (old_ext - new_ext) Extensions that were added by AS but are no longer defined
-    updated_ext - (ext - bad_ext) sublime's adjusted extension list minus the obsolete ones
+    `exts`        - Sublime's extension list for the given language
+    `old_ext`     - The current saved list of AS added extension
+    `new_ext`     - The current tracked list of extensions found defined by AS
+    `bad_ext`     - (`old_ext` - `new_ext`) Extensions that were added by AS but are no longer defined
+    `updated_ext` - (`ext` - `bad_ext`) Sublime's adjusted extension list minus the obsolete ones
     """
 
-    devlog("Prunning Extensions")
+    devlog("Pruning Extensions")
     for name, new_ext in ext_added.items():
         updated = False
         settings_file = name + '.sublime-settings'
@@ -262,7 +262,7 @@ def debug(msg):
 
 
 def devlog(msg):
-    """Print the dev mode ApplySyntax log message in console (dev mode only)."""
+    """Print the developer mode ApplySyntax log message in console (developer mode only)."""
 
     if SETTINGS.get("debug", True) == 'verbose':
         log(msg)
@@ -410,7 +410,7 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
         The default settings file uses / to separate the syntax name parts, but if the user
         is on windows, that might not work right. And if the user happens to be on Mac/Linux but
         is using rules that were written on windows, the same thing will happen. So let's
-        be intelligent about this and replace forward slashes and back slashes with os.path.sep to get
+        be intelligent about this and replace forward slashes and back slashes with `os.path.sep` to get
         a reasonable starting point.
         """
 
