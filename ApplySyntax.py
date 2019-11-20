@@ -365,7 +365,7 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
         """Detect the syntax."""
 
         self.plugins = {}
-        if view.is_scratch() or not view.file_name:  # buffer has never been saved
+        if view.is_scratch() or not view.file_name():  # buffer has never been saved
             return
 
         self.reset_cache_variables(view)

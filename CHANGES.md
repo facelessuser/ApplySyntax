@@ -1,3 +1,7 @@
+## ApplySyntax 2.5.5
+
+- **FIX**: Fix check for unsaved buffer.
+
 ## ApplySyntax 2.5.4
 
 - **FIX**: Fix extension compare and order of evaluation.
