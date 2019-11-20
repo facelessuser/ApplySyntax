@@ -16,6 +16,7 @@ RSpec
 SetSyntax
 Sublime's
 Twemoji
+YAML
 changelog
 hashable
 installable

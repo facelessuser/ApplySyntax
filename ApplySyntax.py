@@ -262,7 +262,7 @@ def debug(msg):
 
 
 def devlog(msg):
-    """Print the developer mode ApplySyntax log message in console (dev mode only)."""
+    """Print the developer mode ApplySyntax log message in console (developer mode only)."""
 
     if SETTINGS.get("debug", True) == 'verbose':
         log(msg)
