@@ -50,7 +50,7 @@ matrix:
 
 - name: markdown
   sources:
-  - README.md
+  - 'readme.md|messages/*.md'
   aspell:
     lang: en
   dictionary:
