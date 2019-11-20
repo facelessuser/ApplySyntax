@@ -1,4 +1,4 @@
-[![Unix Build Status][travis-image]][travis-link]
+[![Build][github-ci-image]][github-ci-link]
 [![Package Control Downloads][pc-image]][pc-link]
 # ApplySyntax
 
@@ -18,7 +18,28 @@ DetectSyntax was originally created by phillipkoebbe.  In his words, these are h
 
 http://facelessuser.github.io/ApplySyntax/
 
-[travis-image]: https://img.shields.io/travis/facelessuser/ApplySyntax/master.svg
-[travis-link]: https://travis-ci.org/facelessuser/ApplySyntax
+# License
+
+Raw Line Edit is released under the MIT license.
+
+Copyright (c) phillipkoebbe.
+
+Changes: Copyright (c) 2013 - 2019 Isaac Muse <isaacmuse@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[github-ci-image]: https://github.com/facelessuser/ApplySyntax/workflows/build/badge.svg
+[github-ci-link]: https://github.com/facelessuser/ApplySyntax/actions?workflow=build
 [pc-image]: https://img.shields.io/packagecontrol/dt/ApplySyntax.svg
 [pc-link]: https://packagecontrol.io/packages/ApplySyntax

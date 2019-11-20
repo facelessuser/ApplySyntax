@@ -4,8 +4,9 @@ repo_url: https://github.com/facelessuser/ApplySyntax
 edit_uri: tree/master/docs/src/markdown
 site_description: Syntax detector for Sublime Text.
 copyright: |
-  Copyright &copy; 2013 - 2018 <a href="https://github.com/facelessuser">Isaac Muse</a>
-  <br><span class="md-footer-custom-text">emoji provided free by </span><a href="http://www.emojione.com">EmojiOne</a>
+  Copyright &copy; 2013 - 2019 <a href="https://github.com/facelessuser">Isaac Muse</a>
+  <br><span class="md-footer-custom-text">emoji provided free by </span>
+  <a href="https://github.com/twitter/twemoji">Twemoji</a>
 
 docs_dir: docs/src/markdown
 theme:
@@ -57,6 +58,7 @@ markdown_extensions:
   - pymdownx.caret:
   - pymdownx.smartsymbols:
   - pymdownx.emoji:
+      emoji_index: !!python/name:pymdownx.emoji.twemoji
       emoji_generator: !!python/name:pymdownx.emoji.to_png
   - pymdownx.escapeall:
       hardbreak: true
@@ -76,6 +78,6 @@ extra:
     - type: github
       link: https://github.com/facelessuser
 extra_css:
-  - extra-06017885a7.css
+  - extra-174a536342.css
 extra_javascript:
-  - extra-0b9b22dd13.js
+  - extra-0d9305e748.js
