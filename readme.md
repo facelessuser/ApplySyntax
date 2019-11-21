@@ -41,5 +41,5 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 
 [github-ci-image]: https://github.com/facelessuser/ApplySyntax/workflows/build/badge.svg
 [github-ci-link]: https://github.com/facelessuser/ApplySyntax/actions?workflow=build
-[pc-image]: https://img.shields.io/packagecontrol/dt/ApplySyntax.svg
+[pc-image]: https://img.shields.io/packagecontrol/dt/ApplySyntax.svg?logo=sublime%20text&logoColor=cccccc
 [pc-link]: https://packagecontrol.io/packages/ApplySyntax
