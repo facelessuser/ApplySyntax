@@ -213,5 +213,6 @@
                 {"file_path": ".*(\\\\|/)(fileadmin|typo3|TypoScript).*(\\\\|/)(setup|constants)\\.txt$"}
             ]
         }
-    ]
+    ],
+    "default_ext_trim": []
 }

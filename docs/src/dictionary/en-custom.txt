@@ -18,6 +18,7 @@ Sublime's
 Twemoji
 YAML
 changelog
+deprecations
 hashable
 installable
 macOS

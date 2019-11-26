@@ -40,9 +40,6 @@ Lastly, if using Package Control, it is likely that most, if not all, of your pa
 "syntax": "Rails/Language/Ruby Haml"
 ```
 
-!!! warning "Deprecation"
-    The previous name for this key was `name` and has been deprecated and will be removed in the future.
-
 ### Extensions
 
 The `extensions` attribute is used to define extensions to apply a syntax to.  `extensions` is an array of strings where each string is an extension.  No `.` is needed when defining extensions, unless it is desired to target a dot file like `.gitignore`, then you would include the `.`.
@@ -123,9 +120,6 @@ For backwards compatibility with older versions of ApplySyntax, the rule name `f
 {"file_path": ".*\\.xml(\\.dist)?$"},
 ```
 
-!!! warning "Deprecation"
-    The previous name for this key was `file_name` and has been deprecated and will be removed in the future.
-
 #### First Line Rule
 
 A `first_line` rule allows you to check whether the first line of the file's content matches a given regex. As with `file_path` [rules](#file-path-rule), the pattern is always anchored to the beginning of the line.
@@ -152,9 +146,6 @@ Can be simplified as:
 
 For backwards compatibility with older versions of ApplySyntax, the rule name `binary` is also accepted, and functions exactly like `interpreter`.
 
-!!! warning "Deprecation"
-    The previous name for this key was `binary` and has been deprecated and will be removed in the future.
-
 #### Function Rule
 
 This is an example of using a custom function to decide whether or not to apply a syntax. This is done via ApplySyntax plugins.  The plugin file should be under a plugin folder.
@@ -172,7 +163,7 @@ The plugin must have a function defined as `syntax_test`. `syntax_test` will be 
 
 Example:
 
-```python
+```py3
 def syntax_test(file_path, foo):
     # Some test logic
     return False # True or False
@@ -180,9 +171,6 @@ def syntax_test(file_path, foo):
 
 !!! tip "Tip"
     When placing a function rule module in a package, it is advised to put it in a sub-folder.  The sub-folder does not need an `__init__.py`, it just needs your module(s).
-
-!!! warning "Deprecation"
-    Previously, function rules allowed for a `name` attribute which allowed the user to specify the function name to call in the plugin.  In the current version, ApplySyntax looks for a function named `syntax_test`.  While `name` is still currently supported, it has been deprecated, and will be removed in the future.
 
 #### Content Rule
 
@@ -197,9 +185,25 @@ Sometimes a file name or first line search is just not enough and maybe a functi
 
     Also, try to use very specific regex to ensure you don't get false positives.
 
+### Extension Trimming
+
+Sometimes a file may have a trailing extension that prevents it from matching a rule, but if it was trimmed off, it would match. By creating an extension trimming rule, you target files that do not initial match and send them back through the pipe without it's last extension.
+
+Currently, an extension trimming rule only contains a `file_path` pattern.
+
+```js
+"ext_trim": [{"file_path": ".*\\.py3\\.temp"}]
+```
+
+So, if we had a file named `test.py3.temp`, it normally wouldn't match one of default rules. With the above rule, the file would be retried as `test.py3` and would match the Python syntax rule.
+
 ### Project Specific Rules
 
-To define project specific syntaxes, just create a `settings` key in your project file (if it doesn't already exist) and then and an additional key under `settings` called `project_syntaxes`.  `project_syntaxes` is an array; just add your syntax rules to `project_syntaxes` just like you would add them to `syntaxes` in your user settings file, and ApplySyntax will prepend the rules to the beginning of your defined rules.  The order of rules is as follows: project --> user --> default.
+To define project specific syntaxes, just create a `settings` key in your project file (if it doesn't already exist) and then and an additional key under `settings` called `project_syntaxes` or `project_ext_trim`.
+
+`project_syntaxes` is an array; just add your syntax rules to `project_syntaxes` just like you would add them to `syntaxes` in your user settings file, and ApplySyntax will prepend the rules to the beginning of your defined rules.  The order of rules is as follows: project --> user --> default.
+
+`project_ext_trim` is also an array, and you can trim rules just as you would to `ext_trim` in your user settings file.
 
 There is one difference between project specific rules and global rules.  In project rules, the [extensions](#extensions) key will not be applied to the associated syntax language settings file as project specific rules are not global, but language settings files are global.
 
@@ -213,6 +217,9 @@ There is one difference between project specific rules and global rules.  In pro
                     {"first_line": "^<\\?xml"}
                 ]
             }
+        ],
+        "project_ext_trim": [
+            {"file_path": ".*\\.file.temp"}
         ]
     }
 ```
