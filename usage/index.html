@@ -363,6 +363,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#extension-trimming" class="md-nav__link">
+    Extension Trimming
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#project-specific-rules" class="md-nav__link">
     Project Specific Rules
   </a>
@@ -543,6 +550,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#extension-trimming" class="md-nav__link">
+    Extension Trimming
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#project-specific-rules" class="md-nav__link">
     Project Specific Rules
   </a>
@@ -639,10 +653,6 @@
 <div class="codehilite"><pre><span></span><span class="s2">&quot;syntax&quot;</span><span class="o">:</span> <span class="s2">&quot;Rails/Language/Ruby Haml&quot;</span>
 </pre></div>
 
-<div class="admonition warning">
-<p class="admonition-title">Deprecation</p>
-<p>The previous name for this key was <code>name</code> and has been deprecated and will be removed in the future.</p>
-</div>
 <h3 id="extensions">Extensions<a class="headerlink" href="#extensions" title="Permanent link"></a></h3>
 <p>The <code>extensions</code> attribute is used to define extensions to apply a syntax to.  <code>extensions</code> is an array of strings where each string is an extension.  No <code>.</code> is needed when defining extensions, unless it is desired to target a dot file like <code>.gitignore</code>, then you would include the <code>.</code>.</p>
 <div class="codehilite"><pre><span></span>    <span class="p">{</span>
@@ -706,10 +716,6 @@
 <div class="codehilite"><pre><span></span><span class="p">{</span><span class="s2">&quot;file_path&quot;</span><span class="o">:</span> <span class="s2">&quot;.*\\.xml(\\.dist)?$&quot;</span><span class="p">},</span>
 </pre></div>
 
-<div class="admonition warning">
-<p class="admonition-title">Deprecation</p>
-<p>The previous name for this key was <code>file_name</code> and has been deprecated and will be removed in the future.</p>
-</div>
 <h4 id="first-line-rule">First Line Rule<a class="headerlink" href="#first-line-rule" title="Permanent link"></a></h4>
 <p>A <code>first_line</code> rule allows you to check whether the first line of the file's content matches a given regex. As with <code>file_path</code> <a href="#file-path-rule">rules</a>, the pattern is always anchored to the beginning of the line.</p>
 <div class="codehilite"><pre><span></span><span class="p">{</span><span class="s2">&quot;first_line&quot;</span><span class="o">:</span> <span class="s2">&quot;^&lt;\\?xml&quot;</span><span class="p">},</span>
@@ -726,10 +732,6 @@
 </pre></div>
 
 <p>For backwards compatibility with older versions of ApplySyntax, the rule name <code>binary</code> is also accepted, and functions exactly like <code>interpreter</code>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Deprecation</p>
-<p>The previous name for this key was <code>binary</code> and has been deprecated and will be removed in the future.</p>
-</div>
 <h4 id="function-rule">Function Rule<a class="headerlink" href="#function-rule" title="Permanent link"></a></h4>
 <p>This is an example of using a custom function to decide whether or not to apply a syntax. This is done via ApplySyntax plugins.  The plugin file should be under a plugin folder.</p>
 <p>The function rule takes two parameters.  The first is <code>source</code> and is the plugin source file.  It is defined as if you were importing a python plugin.  If you had a plugin in <code>Packages/ApplySyntax/as_plugins/is_rails_file.py</code>, it would be defined under <code>source</code> as <code>ApplySyntax.as_plugins.is_rails_file</code>.  Function rules still support the legacy way: <code>ApplySyntax/as_plugins/is_rails_file</code>, but it is recommended to use the dot notation as it makes more sense from a Python import perspective.</p>
@@ -741,16 +743,12 @@
 <p>Example:</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">syntax_test</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">foo</span><span class="p">):</span>
     <span class="c1"># Some test logic</span>
-    <span class="k">return</span> <span class="bp">False</span> <span class="c1"># True or False</span>
+    <span class="k">return</span> <span class="kc">False</span> <span class="c1"># True or False</span>
 </pre></div>
 
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>When placing a function rule module in a package, it is advised to put it in a sub-folder.  The sub-folder does not need an <code>__init__.py</code>, it just needs your module(s).</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Deprecation</p>
-<p>Previously, function rules allowed for a <code>name</code> attribute which allowed the user to specify the function name to call in the plugin.  In the current version, ApplySyntax looks for a function named <code>syntax_test</code>.  While <code>name</code> is still currently supported, it has been deprecated, and will be removed in the future.</p>
 </div>
 <h4 id="content-rule">Content Rule<a class="headerlink" href="#content-rule" title="Permanent link"></a></h4>
 <p>Sometimes a file name or first line search is just not enough and maybe a function rule is overkill.  In this case, maybe searching the content of a file can be enough.  You can search a file's content with regex for a specific token via the <code>contains</code> rule.</p>
@@ -762,8 +760,17 @@
 <p>It is recommended to pair <code>contains</code> rules with other rules via the <code class="codehilite"><span class="s2">&quot;match&quot;</span><span class="o">:</span> <span class="s2">&quot;all&quot;</span></code> option to ensure you don't search every file (which can significantly slow down the editor); this will also help ensure get more reliable matches. If pairing with other rules as dependencies, it is advised to pair the <code>contains</code> rule after the other required rule(s) to ensure you search the content of as few files as possible.</p>
 <p>Also, try to use very specific regex to ensure you don't get false positives.</p>
 </div>
+<h3 id="extension-trimming">Extension Trimming<a class="headerlink" href="#extension-trimming" title="Permanent link"></a></h3>
+<p>Sometimes a file may have a trailing extension that prevents it from matching a rule, but if it was trimmed off, it would match. By creating an extension trimming rule, you target files that do not initial match and send them back through the pipe without it's last extension.</p>
+<p>Currently, an extension trimming rule only contains a <code>file_path</code> pattern.</p>
+<div class="codehilite"><pre><span></span><span class="s2">&quot;ext_trim&quot;</span><span class="o">:</span> <span class="p">[{</span><span class="s2">&quot;file_path&quot;</span><span class="o">:</span> <span class="s2">&quot;.*\\.py3\\.temp&quot;</span><span class="p">}]</span>
+</pre></div>
+
+<p>So, if we had a file named <code>test.py3.temp</code>, it normally wouldn't match one of default rules. With the above rule, the file would be retried as <code>test.py3</code> and would match the Python syntax rule.</p>
 <h3 id="project-specific-rules">Project Specific Rules<a class="headerlink" href="#project-specific-rules" title="Permanent link"></a></h3>
-<p>To define project specific syntaxes, just create a <code>settings</code> key in your project file (if it doesn't already exist) and then and an additional key under <code>settings</code> called <code>project_syntaxes</code>.  <code>project_syntaxes</code> is an array; just add your syntax rules to <code>project_syntaxes</code> just like you would add them to <code>syntaxes</code> in your user settings file, and ApplySyntax will prepend the rules to the beginning of your defined rules.  The order of rules is as follows: project &rarr; user &rarr; default.</p>
+<p>To define project specific syntaxes, just create a <code>settings</code> key in your project file (if it doesn't already exist) and then and an additional key under <code>settings</code> called <code>project_syntaxes</code> or <code>project_ext_trim</code>.</p>
+<p><code>project_syntaxes</code> is an array; just add your syntax rules to <code>project_syntaxes</code> just like you would add them to <code>syntaxes</code> in your user settings file, and ApplySyntax will prepend the rules to the beginning of your defined rules.  The order of rules is as follows: project &rarr; user &rarr; default.</p>
+<p><code>project_ext_trim</code> is also an array, and you can trim rules just as you would to <code>ext_trim</code> in your user settings file.</p>
 <p>There is one difference between project specific rules and global rules.  In project rules, the <a href="#extensions">extensions</a> key will not be applied to the associated syntax language settings file as project specific rules are not global, but language settings files are global.</p>
 <div class="codehilite"><pre><span></span>    <span class="s2">&quot;settings&quot;</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">&quot;project_syntaxes&quot;</span><span class="o">:</span> <span class="p">[</span>
@@ -774,6 +781,9 @@
                     <span class="p">{</span><span class="s2">&quot;first_line&quot;</span><span class="o">:</span> <span class="s2">&quot;^&lt;\\?xml&quot;</span><span class="p">}</span>
                 <span class="p">]</span>
             <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;project_ext_trim&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s2">&quot;file_path&quot;</span><span class="o">:</span> <span class="s2">&quot;.*\\.file.temp&quot;</span><span class="p">}</span>
         <span class="p">]</span>
     <span class="p">}</span>
 </pre></div>
