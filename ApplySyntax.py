@@ -374,13 +374,37 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
         if not self.syntaxes:
             return
 
+        found = False
         for syntax in self.syntaxes:
             # stop on the first syntax that matches
             if self.syntax_matches(syntax):
-                self.set_syntax(syntax.get("syntax", syntax.get("name")))
-                if "name" in syntax:
-                    self.print_deprecation_warning('name')
+                found = True
+                self.set_syntax(syntax.get("syntax"))
                 break
+
+        # If pattern matches extension trim pattern, try again after trimming the extension
+        if not found:
+            for ext_trim in self.ext_trim:
+                try:
+                    pattern = ext_trim.get('file_path')
+                    match = re.match(pattern, self.file_name) is not None
+                except Exception:
+                    if self.reraise_exceptions:
+                        raise
+                    else:
+                        match = False
+
+                if match:
+                    parts = os.path.splitext(self.orig_file_name)
+                    # If there is no extension, then there is nothing to do
+                    if parts[1]:
+                        self.file_name = parts[0]
+                        for syntax in self.syntaxes:
+                            if self.syntax_matches(syntax):
+                                self.set_syntax(syntax.get("syntax", syntax.get("name")))
+                                break
+                    break
+
         self.plugins = {}
 
     def reset_cache_variables(self, view):
@@ -388,6 +412,7 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
 
         self.view = view
         self.file_name = view.file_name()
+        self.orig_file_name = self.file_name
         self.first_line = None  # We read the first line only when needed
         self.entire_file = None  # We read the contents of the entire file only when needed
         self.syntaxes = []
@@ -479,6 +504,12 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
 
         self.syntaxes = project_syntaxes + user_syntaxes + default_syntaxes
 
+        default_ext_trim = self.get_setting("default_ext_trim", [])
+        user_ext_trim = self.get_setting("ext_trim", [])
+        project_ext_trim = self.get_setting("project_ext_trim", [])
+
+        self.ext_trim = default_ext_trim + user_ext_trim + project_ext_trim
+
     def syntax_matches(self, syntax):
         """Match syntax rules."""
 
@@ -518,17 +549,15 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
             # rules matched
             return False
 
-    def get_function(self, path_to_file, function_name=None):
+    def get_function(self, path_to_file):
         """Get the match function."""
         try:
-            if function_name is None:
-                function_name = "syntax_test"
             path_name = sublime_format_path(os.path.join("Packages", path_to_file))
             module_name = os.path.splitext(path_name)[0].replace('Packages/', '', 1).replace('/', '.')
             module = imp.new_module(module_name)
             sys.modules[module_name] = module
             exec(compile(sublime.load_resource(path_name), module_name, 'exec'), sys.modules[module_name].__dict__)
-            function = getattr(module, function_name)
+            function = getattr(module, "syntax_test")
         except Exception:
             if self.reraise_exceptions:
                 raise
@@ -560,16 +589,12 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
         if source in self.plugins:
             function = self.plugins[source]
         else:
-            function_name = function_rule.get("name", None)
-            if function_name is not None:
-                self.print_deprecation_warning('name', 'function')
-
             if not source or source.lower().endswith(".py"):
                 # Bad format
                 return False
 
             path_to_file = source.replace('.', '/') + '.py'
-            function = self.get_function(path_to_file, function_name)
+            function = self.get_function(path_to_file)
 
             if function is None:
                 # can't find it ... nothing more to do
@@ -600,21 +625,9 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
                 self.fetch_first_line()
             subject = self.first_line
             regexp = '^#\\!(?:.+)' + rule.get("interpreter")
-        elif "binary" in rule:
-            # Deprecated in favour of `interpreter`
-            self.print_deprecation_warning('binary')
-            if self.first_line is None:
-                self.fetch_first_line()
-            subject = self.first_line
-            regexp = '^#\\!(?:.+)' + rule.get("binary")
         elif "file_path" in rule:
             subject = self.file_name
             regexp = rule.get("file_path")
-        elif "file_name" in rule:
-            # Deprecated in favour of `file_path`
-            self.print_deprecation_warning('file_name')
-            subject = self.file_name
-            regexp = rule.get("file_name")
         elif "contains" in rule:
             if self.entire_file is None:
                 self.fetch_entire_file()
