@@ -14,9 +14,7 @@ class TestSettings(unittest.TestCase):
         for root, dirnames, filenames in os.walk(folder):
             for filename in fnmatch.filter(filenames, pattern):
                 yield os.path.join(root, filename)
-            for dirname in [d for d in dirnames if d not in ('.svn', '.git', '.tox')]:
-                for f in self._get_json_files(pattern, os.path.join(root, dirname)):
-                    yield f
+            dirnames = [d for d in dirnames if d not in ('.svn', '.git', '.tox')]
 
     def test_json_settings(self):
         """Test each JSON file."""
@@ -26,13 +24,11 @@ class TestSettings(unittest.TestCase):
             '*.sublime-keymap',
             '*.sublime-commands',
             '*.sublime-menu',
-            '*.sublime-theme',
-            '*.sublime-color-scheme'
+            '*.sublime-theme'
         )
 
         for pattern in patterns:
             for f in self._get_json_files(pattern):
-                print(f)
                 self.assertFalse(
                     validate_json_format.CheckJsonFormat(False, True).check_format(f),
                     "%s does not comform to expected format!" % f
