@@ -1,5 +1,9 @@
 # ApplySyntax
 
+## 3.0.1
+
+- **FIX**: Avoid evaluating path if it is None.
+
 ## 3.0.0
 
 - **NEW**: Remove deprecations.
