@@ -445,6 +445,9 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
             names = name
 
         for n in names:
+            if not n:
+                continue
+
             path = os.path.dirname(n)
             if not path:
                 continue
