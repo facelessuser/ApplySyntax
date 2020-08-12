@@ -1,7 +1,10 @@
 # ApplySyntax
 
-## 3.1.0
+## 4.0.0
 
+- **NEW**: All file names are now normalized to `/`, so regex patterns should no longer use `\` to specify path
+  separators for Windows. Please update your patterns personal patterns to use `/` in the settings file instead of the
+  double escaped backslashes (`\\\\`). This applies to `file_path` rule patterns and `ext_trim` patterns.
 - **NEW**: Add new `globmatch` rule.
 - **NEW**: Add new `apply_syntax_browse` command in the command palette to browse all syntaxes. When one is selected,
   the syntax will be copied to the clipboard in a form compatible to be used in a syntax rule.
