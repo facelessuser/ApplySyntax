@@ -311,8 +311,17 @@ Currently, an extension trimming rule only contains a `file_path` pattern.
 "ext_trim": [{"file_path": ".*\\.py3\\.temp"}]
 ```
 
+You can also use `globmatch` patterns:
+
+```js
+"ext_trim": [{"globmatch": "**/*.py3.temp"}]
+```
+
 So, if we had a file named `test.py3.temp`, it normally wouldn't match one of default rules. With the above rule, the
 file would be retried as `test.py3` and would match the Python syntax rule.
+
+!!! new "New 4.0"
+    `globmatch` support was added in 4.0.
 
 !!! new "Changed 4.0"
     On Windows systems, paths are now normalized to from using `\` to `/`. This makes creating patterns for cross
