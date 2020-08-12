@@ -129,19 +129,19 @@ with `\\`, just use `/`.
 
 ```js
 {"globmatch": "**/*.py"}
-````
+```
 
 When providing a list, all patterns are evaluated together. This allows you to apply excludes:
 
 ```js
 {"globmatch": ["**/*.py", "!**/bad.py"]}
-````
+```
 
 If necessary, you can specify case sensitivity:
 
 ```js
 {"globmatch": "**/*.py", "case": true}
-````
+```
 
 #### File Path Rule
 

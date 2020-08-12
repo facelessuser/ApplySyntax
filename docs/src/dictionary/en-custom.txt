@@ -5,12 +5,14 @@ Cmd
 Control's
 Ctrl
 DetectSyntax
+Globmatch
 JSON
 JavaScript
 JeanMertz
 MERCHANTABILITY
 MkDocs
 NONINFRINGEMENT
+PayPal
 PyMdown
 RSpec
 SetSyntax
