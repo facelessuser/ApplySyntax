@@ -108,7 +108,40 @@ In this case, there is no `match` key, so only one rule needs to match:
 
 ### Rules
 
-`rules` is an array of rules that can be used to target specific files with your defined syntax file.  The rules are processed until the first rule matches, so order your rules in a way that makes sense to you.
+`rules` is an array of rules that can be used to target specific files with your defined syntax file.  The rules are
+processed until the first rule matches, so order your rules in a way that makes sense to you.
+
+#### Globmatch Rule
+
+A `globmatch` rule defines a glob pattern to match a file path against. Regex is more powerful, but often, a glob
+pattern can be far less cumbersome and easier to specify patterns that work cross platform.
+
+ApplySyntax uses the [`wcmatch`](https://github.com/facelessuser/wcmatch) library with the following flags enabled:
+
+- `GLOBSTAR`: Allows you to match 0 or more directories with `**`.
+- `BRACE`: Allows you to use Bash style brace expansions for patterns (`a{b,c}` --> `ab ac`).
+- `EXTGLOB`: Allows you to use extended glob patterns such as `@(file1|file2)`, etc.
+- `NEGATE`: Allows you to use exclusion patterns that filter inclusion patterns (`#!py3 ['**/*.py', '!**/bad.py']`).
+- `DOTGLOB`: Allows `*` and other such patterns to match file names that start with `.`.
+
+`globmatch` rule takes either a string pattern or list of strings patterns. You do not have to specify Windows paths
+with `\\`, just use `/`.
+
+```js
+{"globmatch": "**/*.py"}
+````
+
+When providing a list, all patterns are evaluated together. This allows you to apply excludes:
+
+```js
+{"globmatch": ["**/*.py", "!**/bad.py"]}
+````
+
+If necessary, you can specify case sensitivity:
+
+```js
+{"globmatch": "**/*.py", "case": true}
+````
 
 #### File Path Rule
 
