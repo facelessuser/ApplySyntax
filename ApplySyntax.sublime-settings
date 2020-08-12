@@ -64,8 +64,7 @@
             ],
             "rules": [
                 {"file_path": ".*spec\\.rb$"},
-                {"file_path": ".*/spec/.*\\.rb$"},
-                {"file_path": ".*\\\\spec\\\\.*\\.rb$"}
+                {"file_path": ".*/spec/.*\\.rb$"}
             ]
         },
         {
@@ -91,16 +90,15 @@
             "syntax": "Ruby/Ruby",
             "extensions": ["thor", "rake", "simplecov", "jbuilder", "rb", "podspec", "rabl"],
             "rules": [
-                {"file_path": ".*(\\\\|/)Gemfile$"},
-                {"file_path": ".*(\\\\|/)Capfile$"},
-                {"file_path": ".*(\\\\|/)Guardfile$"},
-                {"file_path": ".*(\\\\|/)[Rr]akefile$"},
-                {"file_path": ".*(\\\\|/)Berksfile$"},
-                {"file_path": ".*(\\\\|/)[Cc]heffile$"},
-                {"file_path": ".*(\\\\|/)Thorfile$"},
-                {"file_path": ".*(\\\\|/)Podfile$"},
-                {"file_path": ".*(\\\\|/)config.ru$"},
-                {"file_path": ".*\\\\Vagrantfile(\\\\..*)?$"},
+                {"file_path": ".*/Gemfile$"},
+                {"file_path": ".*/Capfile$"},
+                {"file_path": ".*/Guardfile$"},
+                {"file_path": ".*/[Rr]akefile$"},
+                {"file_path": ".*/Berksfile$"},
+                {"file_path": ".*/[Cc]heffile$"},
+                {"file_path": ".*/Thorfile$"},
+                {"file_path": ".*/Podfile$"},
+                {"file_path": ".*/config.ru$"},
                 {"file_path": ".*/Vagrantfile(/..*)?$"},
                 // Interpreter is a short hand way of doing:
                 //      {"first_line": "^#\\!(?:.+)ruby"}
@@ -217,9 +215,9 @@
         {
             "syntax": "TypoScript/TypoScript",
             "rules": [
-                {"file_path": ".*(\\\\|/)ext_conf_template\\.txt$"},
-                {"file_path": ".*(\\\\|/)ext_typoscript_(setup|constants)\\.txt$"},
-                {"file_path": ".*(\\\\|/)(fileadmin|typo3|TypoScript).*(\\\\|/)(setup|constants)\\.txt$"}
+                {"file_path": ".*/ext_conf_template\\.txt$"},
+                {"file_path": ".*/ext_typoscript_(setup|constants)\\.txt$"},
+                {"file_path": ".*/(fileadmin|typo3|TypoScript).*/(setup|constants)\\.txt$"}
             ]
         }
     ],

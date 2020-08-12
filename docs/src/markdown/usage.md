@@ -23,10 +23,16 @@ This command will show a quick panel of all the syntaxes in your Sublime Text in
 when you select one, it will be copied to the clipboard in a form compatible to be used in a syntax rule. Simply paste
 it in the rule.
 
+!!! new "New 4.0"
+    `ApplySyntax: Browse Syntaxes` is new in 4.0.
+
 ### ApplySyntax: Copy Current Syntax to Clipboard
 
 This command will copy the current syntax in the active view to your clipboard in a form that is compatible to be used
 in a syntax rule. Simply paste it in the rule.
+
+!!! new "New 4.0"
+    `ApplySyntax: Copy Current Syntax to Clipboard` is new in 4.0.
 
 ## Creating Rules
 
@@ -190,6 +196,9 @@ If necessary, you can specify case sensitivity:
 {"globmatch": "**/*.py", "case": true}
 ```
 
+!!! new "New 4.0"
+    `globmatch` rules are new in 4.0.
+
 #### File Path Rule
 
 A `file_path` rule defines a regex to match against the complete file path. The pattern is always anchored to the
@@ -203,6 +212,10 @@ functions exactly like `file_path`.
 ```js
 {"file_path": ".*\\.xml(\\.dist)?$"},
 ```
+
+!!! new "Changed 4.0"
+    On Windows systems, paths are now normalized to from using `\` to `/`. This makes creating patterns for cross
+    platform use much easier, but it may break some existing rules in the short term.
 
 #### First Line Rule
 
@@ -300,6 +313,10 @@ Currently, an extension trimming rule only contains a `file_path` pattern.
 
 So, if we had a file named `test.py3.temp`, it normally wouldn't match one of default rules. With the above rule, the
 file would be retried as `test.py3` and would match the Python syntax rule.
+
+!!! new "Changed 4.0"
+    On Windows systems, paths are now normalized to from using `\` to `/`. This makes creating patterns for cross
+    platform use much easier, but it may break some existing rules in the short term.
 
 ### Project Specific Rules
 

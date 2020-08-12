@@ -316,11 +316,14 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
         global on_touched_callback
         self.first_line = None
         self.file_name = None
+        self.orig_file_name = None
+        self.norm_file_name = None
         self.entire_file = None
         self.view = None
         self.syntaxes = []
         self.reraise_exceptions = False
         self.seen_deprecation_warnings = set()
+        self.is_win = sublime.platform() == "windows"
 
         on_touched_callback = self.on_touched
 
@@ -428,7 +431,7 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
                     match = False
                     pattern = ext_trim.get('file_path')
                     if pattern:
-                        match = re.match(pattern, self.file_name) is not None
+                        match = re.match(pattern, self.norm_file_name) is not None
                     if not match:
                         pattern = ext_trim.get('globmatch')
                         case = glob.C if ext_trim.get('case', False) else glob.I
@@ -444,6 +447,7 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
                     # If there is no extension, then there is nothing to do
                     if parts[1]:
                         self.file_name = parts[0]
+                        self.norm_file_name = self.file_name.replace('\\', '/') if self.is_win else self.file_name
                         for syntax in self.syntaxes:
                             if self.syntax_matches(syntax):
                                 self.set_syntax(syntax.get("syntax", syntax.get("name")))
@@ -457,6 +461,7 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
 
         self.view = view
         self.file_name = view.file_name()
+        self.norm_file_name = self.file_name.replace('\\', '/') if self.is_win else self.file_name
         self.orig_file_name = self.file_name
         self.first_line = None  # We read the first line only when needed
         self.entire_file = None  # We read the contents of the entire file only when needed
@@ -687,7 +692,7 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
             subject = self.first_line
             regexp = '^#\\!(?:.+)' + rule.get("interpreter")
         elif "file_path" in rule:
-            subject = self.file_name
+            subject = self.norm_file_name
             regexp = rule.get("file_path")
         elif "contains" in rule:
             if self.entire_file is None:
