@@ -3,6 +3,10 @@
 ## 3.1.0
 
 - **NEW**: Add new `globmatch` rule.
+- **NEW**: Add new `apply_syntax_browse` command in the command palette to browse all syntaxes. When one is selected,
+  the syntax will be copied to the clipboard in a form compatible to be used in a syntax rule.
+- **NEW**: Add new `apply_syntax_current` command which will copy the current active view's syntax to the clipboard in a
+  form compatible to be used in a syntax rule.
 
 ## 3.0.1
 

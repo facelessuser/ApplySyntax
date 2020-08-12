@@ -271,6 +271,42 @@ def devlog(msg):
         log(msg)
 
 
+class ApplySyntaxBrowseCommand(sublime_plugin.WindowCommand):
+    """Browse syntaxes."""
+
+    def run(self):
+        """Run command."""
+
+        self.syntaxes = [
+            os.path.splitext(x)[0].replace('Packages/', '', 1)
+            for x in glob.globfilter(sublime.find_resources('*'), '**/*.sublime-syntax', flags=GLOB_FLAGS)
+        ]
+
+        if self.syntaxes:
+            self.window.show_quick_panel(self.syntaxes, self.check_selection)
+
+    def check_selection(self, value):
+        """Check the user's selection."""
+
+        if value > -1:
+            syntax = self.syntaxes[value]
+            sublime.set_clipboard(syntax)
+            self.window.status_message('Copied syntax: {}'.format(syntax))
+
+
+class ApplySyntaxCurrentCommand(sublime_plugin.TextCommand):
+    """Browse syntaxes."""
+
+    def run(self, edit):
+        """Run command."""
+
+        syntax = self.view.settings().get('syntax')
+        if syntax:
+            syntax = os.path.splitext(syntax)[0].replace('Packages/', '', 1)
+            sublime.set_clipboard(syntax)
+            self.view.window().status_message('Copied syntax: {}'.format(syntax))
+
+
 class ApplySyntaxCommand(sublime_plugin.EventListener):
     """ApplySyntax command."""
 
@@ -459,6 +495,7 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
 
             path = os.path.dirname(n)
             if not path:
+                debug('Syntax file for ' + n + ' does not exist')
                 continue
 
             for ext in ST_LANGUAGES:
