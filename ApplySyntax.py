@@ -5,6 +5,9 @@ import os
 import re
 import imp
 import sys
+from wcmatch import glob
+
+GLOB_FLAGS = glob.G | glob.B | glob.E | glob.N | glob.D
 
 DEFAULT_SETTINGS = '''
 {
@@ -386,8 +389,14 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
         if not found:
             for ext_trim in self.ext_trim:
                 try:
+                    match = False
                     pattern = ext_trim.get('file_path')
-                    match = re.match(pattern, self.file_name) is not None
+                    if pattern:
+                        match = re.match(pattern, self.file_name) is not None
+                    if not match:
+                        pattern = ext_trim.get('globmatch')
+                        case = glob.C if ext_trim.get('case', False) else glob.I
+                        match = glob.globmatch(self.file_name, pattern, flags=GLOB_FLAGS | case)
                 except Exception:
                     if self.reraise_exceptions:
                         raise
@@ -528,7 +537,9 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
                 else:
                     continue
 
-            if 'function' in rule:
+            if 'globmatch' in rule:
+                result = self.glob_matches(rule)
+            elif 'function' in rule:
                 result = self.function_matches(rule)
             else:
                 result = self.regexp_matches(rule)
@@ -612,6 +623,16 @@ class ApplySyntaxCommand(sublime_plugin.EventListener):
                 raise
             else:
                 return False
+
+    def glob_matches(self, rule):
+        """Perform glob matches."""
+
+        result = False
+        pattern = rule.get('globmatch')
+        if pattern:
+            case = glob.C if rule.get('case', False) else glob.I
+            result = glob.globmatch(self.file_name, pattern, flags=GLOB_FLAGS | case)
+        return result
 
     def regexp_matches(self, rule):
         """Perform regex matches."""

@@ -1,5 +1,9 @@
 # ApplySyntax
 
+## 3.1.0
+
+- **NEW**: Add new `globmatch` rule.
+
 ## 3.0.1
 
 - **FIX**: Avoid evaluating path if it is None.
