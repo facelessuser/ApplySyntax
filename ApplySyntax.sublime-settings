@@ -22,6 +22,16 @@
     // (true|false|"verbose")
     "debug": true,
 
+    // To specify a syntax to be used, use the syntax path.
+    // You do not need to include `Packages/` nor do you need to include the extension.
+    // So, if you the syntax you wanted was located at `Packages/MyPlugin/my_syntax.sublime-syntax`,
+    // then you would specify `MyPlugin/my_syntax`. To make this easy, you can use of
+    // the following commands in the command palette:
+    //
+    //.- `ApplySyntax: Browse Syntaxes`
+    // - `ApplySyntax: Copy Current Syntax to Clipboard`
+    //
+    //.See documentation for more info.
     "default_syntaxes": [
         {
             // The MXML rules come before the generic XML rules because they

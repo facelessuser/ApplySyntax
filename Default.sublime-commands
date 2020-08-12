@@ -12,5 +12,13 @@
         "args": {
             "url": "http://facelessuser.github.io/ApplySyntax/"
         }
+    },
+    {
+        "caption": "ApplySyntax: Browse Syntaxes",
+        "command": "apply_syntax_browse"
+    },
+    {
+        "caption": "ApplySyntax: Copy Current Syntax to Clipboard",
+        "command": "apply_syntax_current"
     }
 ]
