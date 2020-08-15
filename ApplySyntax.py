@@ -279,7 +279,10 @@ class ApplySyntaxBrowseCommand(sublime_plugin.WindowCommand):
 
         self.syntaxes = [
             os.path.splitext(x)[0].replace('Packages/', '', 1)
-            for x in glob.globfilter(sublime.find_resources('*'), '**/*.sublime-syntax', flags=GLOB_FLAGS)
+            for x in glob.globfilter(
+                sublime.find_resources('*'), '**/*.@(sublime-syntax|tmLanguage)',
+                flags=GLOB_FLAGS | glob.I
+            )
         ]
 
         if self.syntaxes:

@@ -9,6 +9,7 @@ ST3                                      | Fully supported and actively maintain
 
 Contribution from the community is encouraged and can be done in a variety of ways:
 
+- Become a sponsor.
 - Bug reports.
 - Reviewing code.
 - Code patches via pull requests.
@@ -17,13 +18,10 @@ Contribution from the community is encouraged and can be done in a variety of wa
 ## Become a Sponsor :octicons-heart-fill-16:{: .heart-throb}
 
 Open source projects take time and money. Help support the project by becoming a sponsor. You can add your support at
-any tier you feel comfortable with. No amount is too little.
+any tier you feel comfortable with. No amount is too little. We also accept one time contributions via PayPal.
 
-:octicons-mark-github-16: [GitHub Sponsors ](https://github.com/sponsors/facelessuser)
-
-If you'd like to do a one time contribution, you can do so via PayPal.
-
-:fontawesome-brands-paypal: [PayPal](https://www.paypal.me/facelessuser)
+[:octicons-mark-github-16: GitHub Sponsors](https://github.com/sponsors/facelessuser){: .md-button .md-button--primary }
+[:fontawesome-brands-paypal: PayPal](https://www.paypal.me/facelessuser){ .md-button}
 
 ## Bug Reports
 

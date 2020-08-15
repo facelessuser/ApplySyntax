@@ -1,5 +1,9 @@
 # ApplySyntax
 
+## 4.0.1
+
+- **FIX**: "Browse Syntaxes" should show legacy `tmLanguage` files as well as the new `sublime-syntax`.
+
 ## 4.0.0
 
 - **NEW**: All file names are now normalized to `/`, so regex patterns should no longer use `\` to specify path
