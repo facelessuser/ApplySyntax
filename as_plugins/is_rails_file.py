@@ -19,9 +19,6 @@ def syntax_test(file_path):
     file_name = os.path.basename(file_path).lower()
     name, extension = os.path.splitext(file_name)
 
-    if name == 'gemfile':
-        return True
-
     result = False
 
     # I doubt this is the most elegant way of identifying a Rails directory structure,
