@@ -1,5 +1,9 @@
 # ApplySyntax
 
+## 4.0.2
+
+- **FIX**: Fix `Gemfile.lock` being detected as Ruby on Rails. (#148)
+
 ## 4.0.1
 
 - **FIX**: "Browse Syntaxes" should show legacy `tmLanguage` files as well as the new `sublime-syntax`.
