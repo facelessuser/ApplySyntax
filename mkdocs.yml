@@ -30,6 +30,7 @@ nav:
   - About:
     - License: about/license.md
     - Contributing &amp; Support: about/contributing.md
+    - Changelog: about/changelog.md
 
 markdown_extensions:
   - markdown.extensions.toc:
@@ -71,7 +72,10 @@ markdown_extensions:
   - pymdownx.progressbar:
   - pymdownx.striphtml:
   - pymdownx.snippets:
-      base_path: docs/src/markdown/_snippets
+      base_path:
+      - docs/src/markdown/_snippets
+      - CHANGES.md
+
   - pymdownx.keys:
       separator: "\uff0b"
   - pymdownx.details:

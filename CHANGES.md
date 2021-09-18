@@ -1,5 +1,12 @@
 # ApplySyntax
 
+## 4.0.3
+
+- **FIX**: Recent versions of Sublime have the JSON syntax file in a new place.
+- **FIX**: Add `.babelrc` and `.stylelintrc` to JSON rule.
+- **FIX**: Reduce dependencies as they are all not required anymore.
+- **FIX**: Support dialog did not show all relevant dependencies.
+
 ## 4.0.2
 
 - **FIX**: Fix `Gemfile.lock` being detected as Ruby on Rails. (#148)
