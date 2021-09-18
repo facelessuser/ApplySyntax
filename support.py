@@ -5,7 +5,7 @@ import textwrap
 import webbrowser
 import re
 
-__version__ = "4.0.2"
+__version__ = "4.0.3"
 __pc_name__ = 'ApplySyntax'
 
 CSS = '''
@@ -94,22 +94,16 @@ class ApplySyntaxSupportInfoCommand(sublime_plugin.ApplicationCommand):
             info["mdpopups_version"] = 'Version could not be acquired!'
 
         try:
-            import markdown
-            info["markdown_version"] = format_version(markdown, 'version')
+            import wcmatch
+            info["wcmatch_version"] = format_version(wcmatch, 'version')
         except Exception:
-            info["markdown_version"] = 'Version could not be acquired!'
+            info["wcmatch_version"] = 'Version could not be acquired!'
 
         try:
-            import jinja2
-            info["jinja_version"] = format_version(jinja2, '__version__')
+            import bracex
+            info["bracex_version"] = format_version(bracex, 'version')
         except Exception:
-            info["jinja_version"] = 'Version could not be acquired!'
-
-        try:
-            import pygments
-            info["pygments_version"] = format_version(pygments, '__version__')
-        except Exception:
-            info["pygments_version"] = 'Version could not be acquired!'
+            info["bracex_version"] = 'Version could not be acquired!'
 
         msg = textwrap.dedent(
             """\
@@ -118,10 +112,9 @@ class ApplySyntaxSupportInfoCommand(sublime_plugin.ApplicationCommand):
             - Arch: %(arch)s
             - Plugin ver.: %(plugin_version)s
             - Install via PC: %(pc_install)s
-            - mdpopups ver.: %(mdpopups_version)s
-            - markdown ver.: %(markdown_version)s
-            - pygments ver.: %(pygments_version)s
-            - jinja2 ver.: %(jinja_version)s
+            - mdpopups ver.: %(wcmatch_version)s
+            - wcmatch ver.: %(wcmatch_version)s
+            - bracex ver.: %(bracex_version)s
             """ % info
         )
 
