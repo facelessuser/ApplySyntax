@@ -2,42 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://facelessuser.github.io/ApplySyntax/</loc>
-         <lastmod>2021-08-03</lastmod>
+         <lastmod>2022-08-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://facelessuser.github.io/ApplySyntax/installation/</loc>
-         <lastmod>2021-08-03</lastmod>
+         <lastmod>2022-08-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://facelessuser.github.io/ApplySyntax/usage/</loc>
-         <lastmod>2021-08-03</lastmod>
+         <lastmod>2022-08-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://facelessuser.github.io/ApplySyntax/_snippets/abbr/</loc>
-         <lastmod>2021-08-03</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://facelessuser.github.io/ApplySyntax/_snippets/links/</loc>
-         <lastmod>2021-08-03</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://facelessuser.github.io/ApplySyntax/_snippets/refs/</loc>
-         <lastmod>2021-08-03</lastmod>
+         <loc>https://facelessuser.github.io/ApplySyntax/about/changelog/</loc>
+         <lastmod>2022-08-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://facelessuser.github.io/ApplySyntax/about/contributing/</loc>
-         <lastmod>2021-08-03</lastmod>
+         <lastmod>2022-08-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://facelessuser.github.io/ApplySyntax/about/license/</loc>
-         <lastmod>2021-08-03</lastmod>
+         <lastmod>2022-08-12</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
