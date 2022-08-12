@@ -73,7 +73,7 @@ markdown_extensions:
   - pymdownx.striphtml:
   - pymdownx.snippets:
       base_path:
-      - docs/src/markdown/_snippets
+      - docs/src/markdown/.snippets
       - CHANGES.md
 
   - pymdownx.keys:

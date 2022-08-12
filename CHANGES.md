@@ -6,6 +6,7 @@
 - **FIX**: Add `.babelrc` and `.stylelintrc` to JSON rule.
 - **FIX**: Reduce dependencies as they are all not required anymore.
 - **FIX**: Support dialog did not show all relevant dependencies.
+- **FIX**: New location for Ruby syntax files in later Sublime versions.
 
 ## 4.0.2
 
