@@ -98,6 +98,7 @@
                 {"file_path": ".*/[Cc]heffile$"},
                 {"file_path": ".*/Thorfile$"},
                 {"file_path": ".*/Podfile$"},
+                {"file_path": ".*/(Cartfile|Cartfile.resolved)$"},
                 {"file_path": ".*/config.ru$"},
                 {"file_path": ".*/Vagrantfile(/..*)?$"},
                 // Interpreter is a short hand way of doing:
