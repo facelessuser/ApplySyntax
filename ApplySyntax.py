@@ -7,7 +7,7 @@ import imp
 import sys
 from wcmatch import glob
 
-GLOB_FLAGS = glob.G | glob.B | glob.E | glob.N | glob.D
+GLOB_FLAGS = glob.G | glob.B | glob.E | glob.N | glob.D | glob.O
 
 DEFAULT_SETTINGS = '''
 {
