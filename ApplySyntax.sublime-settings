@@ -167,7 +167,7 @@
                 {
                     "globmatch": [
                         "**/.bash*",
-                        "**/.z(shrc|shenv|profile|login|logout)*"
+                        "**/.z@(shrc|shenv|profile|login|logout)*"
                     ]
                 },
                 {"interpreter": "bash"},
