@@ -89,7 +89,7 @@
             "rules": [
                 {
                     "globmatch": [
-                        "**/@(Gemfile|Capfile|Guardfile|[Rr]akefile|Berksfile|Thorfile|Podfile|config.ru|Cartfile?(.resolved))",
+                        "**/@(Gemfile|Capfile|Guardfile|[Rr]akefile|Berksfile|Thorfile|Podfile|config.ru|Cartfile?(.resolved)|Dangerfile)",
                         "**/Vagrantfile{,/**/*}"
                     ]
                 },
