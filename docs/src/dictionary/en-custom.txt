@@ -4,6 +4,7 @@ Changelog
 Cmd
 Control's
 Ctrl
+Dangerfile
 DetectSyntax
 Globmatch
 JSON

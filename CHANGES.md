@@ -1,5 +1,9 @@
 # ApplySyntax
 
+## 4.2.0
+
+- **NEW**: Add Dangerfile to Ruby patterns.
+
 ## 4.1.0
 
 - **NEW**: Ensure `Cartfile`s are recognized as Ruby files.
