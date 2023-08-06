@@ -23,16 +23,18 @@ This command will show a quick panel of all the syntaxes in your Sublime Text in
 when you select one, it will be copied to the clipboard in a form compatible to be used in a syntax rule. Simply paste
 it in the rule.
 
-!!! new "New 4.0"
-    `ApplySyntax: Browse Syntaxes` is new in 4.0.
+/// new | New 4.0
+`ApplySyntax: Browse Syntaxes` is new in 4.0.
+///
 
 ### ApplySyntax: Copy Current Syntax to Clipboard
 
 This command will copy the current syntax in the active view to your clipboard in a form that is compatible to be used
 in a syntax rule. Simply paste it in the rule.
 
-!!! new "New 4.0"
-    `ApplySyntax: Copy Current Syntax to Clipboard` is new in 4.0.
+/// new | New 4.0
+`ApplySyntax: Copy Current Syntax to Clipboard` is new in 4.0.
+///
 
 ## Creating Rules
 
@@ -104,9 +106,10 @@ syntax will also create a file `ApplySyntax.ext-list` in your `User` folder and 
 if you remove a rule, ApplySyntax will only remove the extensions it added to the language file in question. If you do
 not like this functionality, you can simply disable `add_exts_to_lang_settings` by setting it to `false`.
 
-!!! note "Note"
-    `add_exts_to_lang_settings` will not be applied to `extensions` found in a [project specific rule](#project-specific-rules),
-    as project specific rules are not global, but the effects of `add_exts_to_lang_settings` are global.
+/// note | Note
+`add_exts_to_lang_settings` will not be applied to `extensions` found in a [project specific rule](#project-specific-rules),
+as project specific rules are not global, but the effects of `add_exts_to_lang_settings` are global.
+///
 
 ### Match
 
@@ -170,11 +173,11 @@ pattern can be far less cumbersome and easier to specify patterns that work cros
 
 ApplySyntax uses the [`wcmatch`](https://github.com/facelessuser/wcmatch) library with the following flags enabled:
 
-- `GLOBSTAR`: Allows you to match 0 or more directories with `**`.
-- `BRACE`: Allows you to use Bash style brace expansions for patterns (`a{b,c}` --> `ab ac`).
-- `EXTGLOB`: Allows you to use extended glob patterns such as `@(file1|file2)`, etc.
-- `NEGATE`: Allows you to use exclusion patterns that filter inclusion patterns (`#!py3 ['**/*.py', '!**/bad.py']`).
-- `DOTGLOB`: Allows `*` and other such patterns to match file names that start with `.`.
+-   `GLOBSTAR`: Allows you to match 0 or more directories with `**`.
+-   `BRACE`: Allows you to use Bash style brace expansions for patterns (`a{b,c}` --> `ab ac`).
+-   `EXTGLOB`: Allows you to use extended glob patterns such as `@(file1|file2)`, etc.
+-   `NEGATE`: Allows you to use exclusion patterns that filter inclusion patterns (`#!py3 ['**/*.py', '!**/bad.py']`).
+-   `DOTGLOB`: Allows `*` and other such patterns to match file names that start with `.`.
 
 `globmatch` rule takes either a string pattern or list of strings patterns. You do not have to specify Windows paths
 with `\\`, just use `/`.
@@ -195,8 +198,9 @@ If necessary, you can specify case sensitivity:
 {"globmatch": "**/*.py", "case": true}
 ```
 
-!!! new "New 4.0"
-    `globmatch` rules are new in 4.0.
+/// new | New 4.0
+`globmatch` rules are new in 4.0.
+///
 
 #### File Path Rule
 
@@ -212,9 +216,10 @@ functions exactly like `file_path`.
 {"file_path": ".*\\.xml(\\.dist)?$"},
 ```
 
-!!! new "Changed 4.0"
-    On Windows systems, paths are now normalized to from using `\` to `/`. This makes creating patterns for cross
-    platform use much easier, but it may break some existing rules in the short term.
+/// new | Changed 4.0
+On Windows systems, paths are now normalized to from using `\` to `/`. This makes creating patterns for cross
+platform use much easier, but it may break some existing rules in the short term.
+///
 
 #### First Line Rule
 
@@ -276,9 +281,10 @@ def syntax_test(file_path, foo):
     return False # True or False
 ```
 
-!!! tip "Tip"
-    When placing a function rule module in a package, it is advised to put it in a sub-folder.  The sub-folder does not
-    need an `__init__.py`, it just needs your module(s).
+/// tip | Tip
+When placing a function rule module in a package, it is advised to put it in a sub-folder.  The sub-folder does not
+need an `__init__.py`, it just needs your module(s).
+///
 
 #### Content Rule
 
@@ -290,13 +296,14 @@ via the `contains` rule.
 {"contains": "<script [^>]*type=\"text\\/x-handlebars\"[^>]*>"}
 ```
 
-!!! tip "Tip"
-    It is recommended to pair `contains` rules with other rules via the `#!js "match": "all"` option to ensure you don't
-    search every file (which can significantly slow down the editor); this will also help ensure get more reliable
-    matches. If pairing with other rules as dependencies, it is advised to pair the `contains` rule after the other
-    required rule(s) to ensure you search the content of as few files as possible.
+/// tip | Tip
+It is recommended to pair `contains` rules with other rules via the `#!js "match": "all"` option to ensure you don't
+search every file (which can significantly slow down the editor); this will also help ensure get more reliable
+matches. If pairing with other rules as dependencies, it is advised to pair the `contains` rule after the other
+required rule(s) to ensure you search the content of as few files as possible.
 
-    Also, try to use very specific regex to ensure you don't get false positives.
+Also, try to use very specific regex to ensure you don't get false positives.
+///
 
 ### Extension Trimming
 
@@ -319,12 +326,14 @@ You can also use `globmatch` patterns:
 So, if we had a file named `test.py3.temp`, it normally wouldn't match one of default rules. With the above rule, the
 file would be retried as `test.py3` and would match the Python syntax rule.
 
-!!! new "New 4.0"
-    `globmatch` support was added in 4.0.
+/// new | New 4.0
+`globmatch` support was added in 4.0.
+///
 
-!!! new "Changed 4.0"
-    On Windows systems, paths are now normalized to from using `\` to `/`. This makes creating patterns for cross
-    platform use much easier, but it may break some existing rules in the short term.
+/// new | Changed 4.0
+On Windows systems, paths are now normalized to from using `\` to `/`. This makes creating patterns for cross
+platform use much easier, but it may break some existing rules in the short term.
+///
 
 ### Project Specific Rules
 
