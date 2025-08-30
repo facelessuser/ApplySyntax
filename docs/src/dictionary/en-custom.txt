@@ -20,6 +20,7 @@ SetSyntax
 Sublime's
 Twemoji
 YAML
+Zsh
 changelog
 deprecations
 hashable

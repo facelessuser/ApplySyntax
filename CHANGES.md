@@ -1,5 +1,9 @@
 # ApplySyntax
 
+## 4.3.0
+
+- **NEW**: Update Zsh rules.
+
 ## 4.2.0
 
 - **NEW**: Add Dangerfile to Ruby patterns.

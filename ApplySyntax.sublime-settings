@@ -159,6 +159,20 @@
         },
         {
             "syntax": [
+                "ShellScript/Zsh"
+            ],
+            "extensions": ["zsh"],
+            "rules": [
+                {
+                    "globmatch": [
+                        "**/.z@(shrc|shenv|profile|login|logout)*"
+                    ]
+                },
+                {"interpreter": "zsh"}
+            ]
+        },
+        {
+            "syntax": [
                 "ShellScript/Bash",
                 "ShellScript/Shell-Unix-Generic"
             ],
