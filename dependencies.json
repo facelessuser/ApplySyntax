@@ -2,6 +2,7 @@
     "*": {
         ">=3124": [
             "mdpopups",
+            "typing",
             "wcmatch",
             "bracex"
         ]

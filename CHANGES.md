@@ -1,5 +1,9 @@
 # ApplySyntax
 
+## 4.3.1
+
+-  **FIX**: Include `typing` dependency.
+
 ## 4.3.0
 
 - **NEW**: Update Zsh rules.
