@@ -157,7 +157,7 @@
             "syntax": "SSH Config/syntax/SSH Config",
             "rules": [
                 {"globmatch": "**/.ssh/config"},
-                {"globmatch": "**/ssh_config.d/*.conf"},
+                {"globmatch": "**/ssh_config.d/*.conf"}
             ]
         },
         {
