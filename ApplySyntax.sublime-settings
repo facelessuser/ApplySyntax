@@ -152,6 +152,15 @@
             ]
         },
         {
+            // This rule requires the SSH Config plugin to be installed (via Package
+            // Control or https://github.com/robballou/sublimetext-sshconfig)
+            "syntax": "SSH Config/syntax/SSH Config",
+            "rules": [
+                {"globmatch": "**/.ssh/config"},
+                {"globmatch": "**/ssh_config.d/*.conf"}
+            ]
+        },
+        {
             // This rule requires the INI plugin to be installed (via Package Control
             // or https://github.com/clintberry/sublime-text-2-ini)
             "syntax": "INI/INI",
