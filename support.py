@@ -5,7 +5,7 @@ import textwrap
 import webbrowser
 import re
 
-__version__ = "4.3.2"
+__version__ = "4.4.0"
 __pc_name__ = 'ApplySyntax'
 
 CSS = '''

@@ -22,6 +22,7 @@ Twemoji
 YAML
 Zsh
 changelog
+config
 deprecations
 hashable
 installable

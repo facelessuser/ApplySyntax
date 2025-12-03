@@ -4,6 +4,6 @@ Changelog and support info command is now available in `Preferences->Package Set
 
 A restart after update may be required.
 
-## 4.3.0
+## 4.4.0
 
-- **NEW**: Update Zsh rules.
+-   **FIX**: SSH config to rules.

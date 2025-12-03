@@ -1,5 +1,9 @@
 # ApplySyntax
 
+## 4.4.0
+
+-   **FIX**: SSH config to rules.
+
 ## 4.3.2
 
 -   **FIX**: Fix support commands.
