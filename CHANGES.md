@@ -1,5 +1,9 @@
 # ApplySyntax
 
+## 4.5.0
+
+-   **NEW**: Changes for Python 3.13 support on ST 4201+.
+
 ## 4.4.0
 
 -   **NEW**: SSH config to rules.
