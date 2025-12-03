@@ -2,7 +2,7 @@
 
 ## 4.4.0
 
--   **FIX**: SSH config to rules.
+-   **NEW**: SSH config to rules.
 
 ## 4.3.2
 
