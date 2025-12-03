@@ -5,12 +5,13 @@
 ApplySyntax is based on the idea of creating rules for applying certain syntaxes to specific files. You define the
 rules, the plugin checks them. The first one to pass wins.
 
-ApplySyntax allows you to create your own custom rules. The easiest way to get started is to press ++ctrl+shift+p++ (Win, Linux) or ++cmd+shift+p++ (macOS) to bring up the quick panel and start typing `ApplySyntax: Settings`.  Alternatively, you can create a settings file
-called `ApplySyntax.sublime-settings` in your `Packages/User` folder.  You can override the default settings in
-`Packages/ApplySyntax/ApplySyntax.sublime-settings` by setting them in your `Packages/User/ApplySyntax.sublime-settings`
-file. You can override any setting to meet your needs.  To prepend rules to the default rule set, you can create a key
-called `syntaxes` (modifying `default_syntaxes` will wipe out all the default rules and is not recommended as you won't
-get the latest updates).
+ApplySyntax allows you to create your own custom rules. The easiest way to get started is to press ++ctrl+shift+p++
+(Win, Linux) or ++cmd+shift+p++ (macOS) to bring up the quick panel and start typing `ApplySyntax: Settings`.
+Alternatively, you can create a settings file called `ApplySyntax.sublime-settings` in your `Packages/User` folder. You
+can override the default settings in `Packages/ApplySyntax/ApplySyntax.sublime-settings` by setting them in your
+`Packages/User/ApplySyntax.sublime-settings` file. You can override any setting to meet your needs.  To prepend rules to
+the default rule set, you can create a key called `syntaxes` (modifying `default_syntaxes` will wipe out all the default
+rules and is not recommended as you won't get the latest updates).
 
 ## Commands
 
